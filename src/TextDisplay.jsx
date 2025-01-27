@@ -32,6 +32,8 @@ const TextDisplay = () => {
     { className: "sm", px: 12 },
   ];
 
+  const [cssUnit, setUnit] = useState("px");
+
   return (
     <div>
       <input
@@ -41,15 +43,34 @@ const TextDisplay = () => {
       />
 
       <div>
-        <button>PX</button>
-        <button>REM</button>
-        <button></button>
+        <button
+          onClick={() => {
+            setUnit("px");
+          }}
+        >
+          PX
+        </button>
+        <button
+          onClick={() => {
+            setUnit("rem");
+          }}
+        >
+          REM
+        </button>
+        <button
+          onClick={() => {
+            setUnit("pt");
+          }}
+        >
+          PT
+        </button>
       </div>
 
       <DynamicTextDisplay
         fontFamily={fontFamily}
         messageToDisplay={messageToDisplay}
         sizes={sizes}
+        cssUnit={cssUnit}
       />
     </div>
   );

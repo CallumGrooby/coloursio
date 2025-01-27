@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import clsx from "clsx";
 
-const DynamicTextDisplay = ({ fontFamily, messageToDisplay, sizes }) => {
-  const [unit, setUnit] = useState("px"); // Tracks the current unit: px, rem, or pt
+const DynamicTextDisplay = ({
+  fontFamily,
+  messageToDisplay,
+  sizes,
+  cssUnit,
+}) => {
   const rootFontSize = parseFloat(
     window.getComputedStyle(document.documentElement).fontSize
   );
@@ -14,8 +19,8 @@ const DynamicTextDisplay = ({ fontFamily, messageToDisplay, sizes }) => {
 
   // Function to get the size in the selected unit
   const getSizeInUnit = (px) => {
-    if (unit === "rem") return `${convertToRem(px)}rem`;
-    if (unit === "pt") return `${convertToPt(px)}pt`;
+    if (cssUnit === "rem") return `${convertToRem(px)}rem`;
+    if (cssUnit === "pt") return `${convertToPt(px)}pt`;
     return `${px}px`; // Default to px
   };
 
@@ -25,6 +30,7 @@ const DynamicTextDisplay = ({ fontFamily, messageToDisplay, sizes }) => {
         {sizes.map((size, index) => {
           const headingTag = `h${index + 1}`;
           const displaySize = getSizeInUnit(size.px);
+          console.log("text-", size.className);
           return React.createElement(
             headingTag,
             {
