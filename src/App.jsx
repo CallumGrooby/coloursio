@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { GoogleFont } from "./ultils/GoogleFont";
 import { FontProvider } from "./ultils/FontContext";
-import TextDisplay from "./TextDisplay";
+import TextDisplay from "./components/TextDisplay/TextDisplay";
 import { ColourPicker } from "./components/colourPicker/colourPicker";
 import { StyleBar } from "./components/styleBar/StyleBar";
 import { BodyStyleProvider, useBodyStyle } from "./ultils/BodyStyleContext";
-import { HeaderStyleProvider } from "./ultils/HeaderStyleContext";
+import {
+  HeaderStyleProvider,
+  useHeaderStyle,
+} from "./ultils/HeaderStyleContext";
+import { Typography } from "./components/sections/Typography";
+import { Sidebar } from "./components/sections/Sidebar";
+import { LandingPage } from "./components/sections/LandingPage";
 
 function App() {
   const [section1Visible, setSection1Visible] = useState(true);
@@ -28,55 +34,23 @@ function App() {
       <FontProvider>
         <BodyStyleProvider>
           <HeaderStyleProvider>
-            <div className="w-[240px] bg-[#D9D9D9]">
+            {/* <div className="w-[240px] bg-[#D9D9D9]">
               <GoogleFont />
               <StyleBar />
-            </div>
-
-            <div
-              className={`transition-all duration-300 ${
-                section1Visible ? "inline" : "hidden"
-              } bg-gray-300 flex-1`}
-            >
-              <button
-                onClick={toggleSection1}
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
-              >
-                Full Screen Section 1
-              </button>
-              <TextDisplay />
-            </div>
-
-            {/* Section 2 */}
-            <div
-              className={`transition-all duration-300 ${
-                section2Visible ? "inline" : "hidden"
-              } bg-gray-300 flex-1`}
-            >
-              <button
-                onClick={toggleSection2}
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
-              >
-                Full Screen Section 2
-              </button>{" "}
-              <TestFunction />
-            </div>
+            </div> */}
+            <Sidebar />
+            <Typography
+              sectionVisibale={section1Visible}
+              toggleVisable={toggleSection1}
+            />
+            <LandingPage
+              sectionVisibale={section2Visible}
+              toggleVisable={toggleSection2}
+            />
           </HeaderStyleProvider>
         </BodyStyleProvider>
       </FontProvider>
     </section>
   );
 }
-
-const TestFunction = () => {
-  const { bodyStyle } = useBodyStyle();
-  console.log(bodyStyle.size); // "16"
-
-  return (
-    <div>
-      <h1>This Is a Test</h1>
-    </div>
-  );
-};
-
 export default App;

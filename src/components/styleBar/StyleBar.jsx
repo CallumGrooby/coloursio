@@ -3,7 +3,7 @@ import { ColourPicker } from "../colourPicker/colourPicker";
 import { HexColorPicker } from "react-colorful";
 import axios from "axios";
 import { ColorInput } from "../colorInput/colorInput";
-import { TypographyControls } from "../TypographyControls";
+import { TypographyControls } from "../typographyControls/TypographyControls";
 import { useBodyStyle } from "../../ultils/BodyStyleContext"; // Import the context
 import { useHeaderStyle } from "../../ultils/HeaderStyleContext";
 
@@ -14,29 +14,15 @@ export const StyleBar = () => {
   const [secondaryColour, setSecondaryColour] = useState("");
   const [accentColour, setAccentColour] = useState("");
 
-  // const [fontHeadingValues, setFontHeadingValue] = useState();
-  // const [fontBodyValues, setFontBodyValues] = useState();
-
-  // useEffect(() => {
-  //   console.log(fontHeadingValues);
-  // }, [fontHeadingValues]);
-
-  // useEffect(() => {
-  //   console.log(fontBodyValues);
-  // }, [fontBodyValues]);
-
+  const { headerStyle, setHeaderStyle } = useHeaderStyle();
   const { bodyStyle, setBodyStyle } = useBodyStyle();
-
-  // Function to update styles
-  const updateBodyTextStyle = (key, value) => {
-    const updatedStyles = { ...bodyStyle, [key]: value };
-    setBodyStyle(updatedStyles); // Update context state
+  // Updates the font styles
+  const updateHeaderTextStyle = (key, value) => {
+    const updatedStyles = { ...headerStyle, [key]: value };
+    setHeaderStyle(updatedStyles); // Update context state
   };
 
-  const { headerStyle, setHeaderStyle } = useHeaderStyle();
-
-  // Function to update styles
-  const updateHeaderTextStyle = (key, value) => {
+  const updateBodyTextStyle = (key, value) => {
     const updatedStyles = { ...bodyStyle, [key]: value };
     setBodyStyle(updatedStyles); // Update context state
   };
@@ -46,15 +32,17 @@ export const StyleBar = () => {
       <TypographyControls
         heading={"headings"}
         onValueChange={(key, value) => {
-          updateBodyTextStyle(key, value);
+          updateHeaderTextStyle(key, value);
         }}
+        style={headerStyle}
       />
 
       <TypographyControls
         heading={"body"}
         onValueChange={(key, value) => {
-          updateHeaderTextStyle(key, value);
+          updateBodyTextStyle(key, value);
         }}
+        style={bodyStyle}
       />
 
       <section className="flex flex-col gap-2 px-3">

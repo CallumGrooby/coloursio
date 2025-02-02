@@ -4,8 +4,8 @@ const BodyContext = createContext();
 
 export const BodyStyleProvider = ({ children }) => {
   const [bodyStyle, setBodyStyle] = useState({
-    size: "16",
-    weight: "500",
+    fontSize: "16",
+    fontWeight: "",
     lineHeight: "",
     letterSpacing: "",
   });

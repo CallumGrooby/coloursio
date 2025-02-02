@@ -4,8 +4,8 @@ const HeaderContext = createContext();
 
 export const HeaderStyleProvider = ({ children }) => {
   const [headerStyle, setHeaderStyle] = useState({
-    size: "16",
-    weight: "500",
+    fontSize: "16",
+    fontWeight: "",
     lineHeight: "",
     letterSpacing: "",
   });

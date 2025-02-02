@@ -20,3 +20,15 @@
 .input-field > input {
   @apply rounded-md border border-[#C0C0C0] shadow-sm w-full px-3 py-1;
 }
+
+.text-unit-button {
+  @apply text-base text-[#969696] bg-[#f2f2f2] shadow-md w-fit max-w-36 px-4 py-1 rounded-md uppercase mb-4 hover:bg-[#d3d3d3];
+}
+
+.text-unit-button {
+  @apply bg-[#d3d3d3];
+}
+
+.text-unit-button.active {
+  @apply bg-[#b9b9b9];
+}
