@@ -30,7 +30,6 @@ const DynamicTextDisplay = ({
         {sizes.map((size, index) => {
           const headingTag = `h${index + 1}`;
           const displaySize = getSizeInUnit(size.px);
-          console.log("text-", size.className);
           return React.createElement(
             headingTag,
             {

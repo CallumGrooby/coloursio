@@ -10,6 +10,8 @@ export const ColorInput = ({
 }) => {
   const [showColourPicker, setShowColourPicker] = useState(false);
   const [color, setColor] = useState(defaultColor);
+  const [ContrastPass, setContrastPass] = useState();
+  const [isBackgroundLight, setIsBackgroundLight] = useState(true);
 
   // Handle color change and call onChange prop
   const handleColorChange = (newColor) => {
@@ -29,14 +31,16 @@ export const ColorInput = ({
   };
 
   useEffect(() => {
+    getTextColor(color);
+  }, [color]);
+
+  useEffect(() => {
     CheckContrast(textColor, color);
   }, [textColor, color]);
 
   const handleShowPicker = () => {
     setShowColourPicker(!showColourPicker);
   };
-
-  const [ContrastPass, setContrastPass] = useState();
 
   const CheckContrast = (textColor, colourToCheck) => {
     if (!textColor) return;
@@ -58,7 +62,6 @@ export const ColorInput = ({
           passLevel: passLevel,
           ratio: ratio,
         };
-        console.log(newObj);
         setContrastPass(newObj);
       })
       .catch((error) => {
@@ -72,17 +75,35 @@ export const ColorInput = ({
     return "Failed";
   }
 
+  const getTextColor = (bgColor) => {
+    if (!bgColor.startsWith("#") || bgColor.length !== 7) return "text-black";
+
+    const r = parseInt(bgColor.slice(1, 3), 16);
+    const g = parseInt(bgColor.slice(3, 5), 16);
+    const b = parseInt(bgColor.slice(5, 7), 16);
+
+    // Calculate luminance
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+    const textColor = luminance > 0.5 ? true : false;
+    setIsBackgroundLight(textColor);
+  };
+
   return (
-    <span className="flex flex-col">
+    <span className="input-field relative">
       <h1 className="text-base">{text} Colour</h1>
       <input
         onClick={handleShowPicker}
         value={color}
         onChange={handleInputChange} // Use handleInputChange to update state and call onChange
         style={{ backgroundColor: color }}
+        className={`${isBackgroundLight ? "text-black" : "text-white"}`}
       />
-      {color}
-      <span className={`${showColourPicker ? "inline-flex" : "hidden"}`}>
+      <span
+        className={`${
+          showColourPicker ? "inline-flex" : "hidden"
+        } absolute z-50`}
+      >
         <HexColorPicker color={color} onChange={handleColorChange} />
       </span>
     </span>
