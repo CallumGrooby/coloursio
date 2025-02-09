@@ -12,6 +12,7 @@ import {
 import { Typography } from "./components/sections/Typography";
 import { Sidebar } from "./components/sections/Sidebar";
 import { LandingPage } from "./components/sections/LandingPage";
+import { ColorsProvider } from "./ultils/ColorsContext";
 
 function App() {
   const [section1Visible, setSection1Visible] = useState(true);
@@ -34,19 +35,21 @@ function App() {
       <FontProvider>
         <BodyStyleProvider>
           <HeaderStyleProvider>
-            {/* <div className="w-[240px] bg-[#D9D9D9]">
+            <ColorsProvider>
+              {/* <div className="w-[240px] bg-[#D9D9D9]">
               <GoogleFont />
               <StyleBar />
             </div> */}
-            <Sidebar />
-            <Typography
-              sectionVisibale={section1Visible}
-              toggleVisable={toggleSection1}
-            />
-            <LandingPage
-              sectionVisibale={section2Visible}
-              toggleVisable={toggleSection2}
-            />
+              <Sidebar />
+              <Typography
+                sectionVisibale={section1Visible}
+                toggleVisable={toggleSection1}
+              />
+              <LandingPage
+                sectionVisibale={section2Visible}
+                toggleVisable={toggleSection2}
+              />
+            </ColorsProvider>
           </HeaderStyleProvider>
         </BodyStyleProvider>
       </FontProvider>

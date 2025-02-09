@@ -6,6 +6,7 @@ import { ColorInput } from "../colorInput/colorInput";
 import { TypographyControls } from "../typographyControls/TypographyControls";
 import { useBodyStyle } from "../../ultils/BodyStyleContext"; // Import the context
 import { useHeaderStyle } from "../../ultils/HeaderStyleContext";
+import { useColors } from "../../ultils/ColorsContext";
 
 export const StyleBar = () => {
   const [textColour, setTextColour] = useState("");
@@ -16,6 +17,7 @@ export const StyleBar = () => {
 
   const { headerStyle, setHeaderStyle } = useHeaderStyle();
   const { bodyStyle, setBodyStyle } = useBodyStyle();
+  const { colorStyle, setColorStyle } = useColors();
   // Updates the font styles
   const updateHeaderTextStyle = (key, value) => {
     const updatedStyles = { ...headerStyle, [key]: value };
@@ -25,6 +27,11 @@ export const StyleBar = () => {
   const updateBodyTextStyle = (key, value) => {
     const updatedStyles = { ...bodyStyle, [key]: value };
     setBodyStyle(updatedStyles); // Update context state
+  };
+
+  const updateTextColour = (key, value) => {
+    const updatedColors = { ...colorStyle, [key]: value };
+    setColorStyle(updatedColors); // Update context state
   };
 
   return (
@@ -52,29 +59,39 @@ export const StyleBar = () => {
 
         <ColorInput
           text={"Text"}
-          defaultColor="#042434"
-          onChange={setTextColour}
+          defaultColor={colorStyle.text}
+          onChange={(value) => {
+            updateTextColour("text", value);
+          }}
         />
         <ColorInput
           text={"Background"}
-          defaultColor="#EFF3F6"
-          onChange={setBackgroundColour}
+          defaultColor={colorStyle.background}
+          onChange={(value) => {
+            updateTextColour("background", value);
+          }}
           textColor={textColour}
         />
         <ColorInput
           text={"Primary"}
-          defaultColor="#2A8E9E"
-          onChange={setPrimaryColour}
+          defaultColor={colorStyle.primary}
+          onChange={(value) => {
+            updateTextColour("primary", value);
+          }}
         />
         <ColorInput
           text={"Secondary"}
-          defaultColor="#01415B"
-          onChange={setSecondaryColour}
+          defaultColor={colorStyle.secondary}
+          onChange={(value) => {
+            updateTextColour("secondary", value);
+          }}
         />
         <ColorInput
           text={"Accent"}
-          defaultColor="#AAD2DA"
-          onChange={setAccentColour}
+          defaultColor={colorStyle.accent}
+          onChange={(value) => {
+            updateTextColour("accent", value);
+          }}
         />
       </section>
     </div>
