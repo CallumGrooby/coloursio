@@ -35,7 +35,7 @@ export const StyleBar = () => {
   };
 
   return (
-    <div>
+    <div className="w-[240px] bg-[#D9D9D9]">
       <TypographyControls
         heading={"headings"}
         onValueChange={(key, value) => {

@@ -5,8 +5,6 @@ import { useHeaderStyle } from "../../ultils/HeaderStyleContext";
 import { useBodyStyle } from "../../ultils/BodyStyleContext";
 
 const TextDisplay = ({ messageToDisplay }) => {
-  const { fontFamily } = useFont(); // Get the current font from context
-
   let rootFontSize = window.getComputedStyle(document.documentElement).fontSize;
   console.log(rootFontSize);
 
@@ -65,20 +63,18 @@ const TextDisplay = ({ messageToDisplay }) => {
       <section className="flex flex-col gap-4">
         <DynamicTextDisplay
           headerText={"Headers"}
-          fontFamily={fontFamily}
           messageToDisplay={messageToDisplay}
           sizes={sizes}
           cssUnit={cssUnit}
-          changeableStyle={headerStyle}
+          style={headerStyle}
         />
 
         <DynamicTextDisplay
           headerText={"Body"}
-          fontFamily={fontFamily}
           messageToDisplay={messageToDisplay}
           sizes={sizes}
           cssUnit={cssUnit}
-          changeableStyle={bodyStyle}
+          style={bodyStyle}
         />
       </section>
     </div>

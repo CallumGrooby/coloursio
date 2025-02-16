@@ -1,9 +1,10 @@
 import { Buttons } from "@testing-library/user-event/dist/cjs/system/pointer/buttons.js";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useBodyStyle } from "../../ultils/BodyStyleContext";
 import { useHeaderStyle } from "../../ultils/HeaderStyleContext";
 import { connect } from "react-redux";
 import { useColors } from "../../ultils/ColorsContext";
+import { formatStyle } from "../../ultils/formatStyles";
 
 export const LandingPage = ({ sectionVisibale, toggleVisable }) => {
   const [currentView, setView] = useState(true);
@@ -16,7 +17,7 @@ export const LandingPage = ({ sectionVisibale, toggleVisable }) => {
     <div
       className={`transition-all duration-300 ${
         sectionVisibale ? "inline" : "hidden"
-      } bg-gray-300 flex-1`}
+      } bg-gray-300 flex-1 overflow-y-scroll`}
     >
       <div>
         <button
@@ -52,6 +53,7 @@ const Website = ({ currentView }) => {
   useEffect(() => {
     console.log(colorStyle, modifiedBodyStyle);
   }, [colorStyle, modifiedBodyStyle]);
+
   const whyUsContent = [
     {
       icon: "",
@@ -104,39 +106,14 @@ const Website = ({ currentView }) => {
   ];
 
   useEffect(() => {
-    const style = addUnitsToStyle(headerStyle);
+    const style = formatStyle(headerStyle);
     setModifiedHeaderStyle(style);
   }, [headerStyle]);
 
   useEffect(() => {
-    const style = addUnitsToStyle(bodyStyle);
+    const style = formatStyle(bodyStyle);
     setModifiedBodyStyle(style);
   }, [bodyStyle]);
-
-  const addUnitsToStyle = (orginalStyle) => {
-    // Store each property in a variable and add units where needed
-    const fontWeight = orginalStyle.fontWeight || "normal";
-    const lineHeight = orginalStyle.lineHeight
-      ? `${orginalStyle.lineHeight}rem`
-      : "normal";
-    const letterSpacing = orginalStyle.letterSpacing
-      ? `${orginalStyle.letterSpacing}rem`
-      : "normal";
-
-    const fontSize = orginalStyle.fontSize
-      ? `${orginalStyle.fontSize}px`
-      : "32px";
-
-    // Create the modified style object
-    const newStyle = {
-      fontSize,
-      fontWeight,
-      lineHeight,
-      letterSpacing,
-    };
-
-    return newStyle; // Update the state with the modified style
-  };
 
   return (
     <section
@@ -297,7 +274,7 @@ const Website = ({ currentView }) => {
           className="flex flex-col gap-3 justify-center items-center max-w-[972px] w-full"
           style={{ color: colorStyle.text }}
         >
-          <h2 style={modifiedBodyStyle}>Our Pricing</h2>
+          <h2 style={modifiedBodyStyle}>Our Mission</h2>
           <h1 style={modifiedHeaderStyle} className="text-center">
             Helping you visualise the perfect
             <br /> colours for your website.
@@ -387,6 +364,104 @@ const Website = ({ currentView }) => {
           })}
         </div>
       </section>
+
+      <footer
+        style={{ color: colorStyle.text }}
+        className="flex flex-col gap-4 max-w-[972px] w-full mx-auto rounded-2xl"
+      >
+        <div
+          className="w-full flex flex-row justify-between items-center gap-16 rounded-2xl px-8 py-4"
+          style={{
+            ...modifiedBodyStyle,
+            color: colorStyle.text,
+            backgroundColor: colorStyle.secondary,
+          }}
+        >
+          <h1 style={modifiedHeaderStyle} className="w-full">
+            Designed to make creativity effortless.
+          </h1>
+          <button
+            style={{
+              ...modifiedBodyStyle,
+              color: colorStyle.text,
+              backgroundColor: colorStyle.primary,
+            }}
+            className="py-3 px-4 rounded-xl text-white w-full max-w-48"
+          >
+            How It Works
+          </button>
+        </div>
+        <div className="w-full flex flex-row gap-4">
+          <div
+            style={{
+              ...modifiedBodyStyle,
+              color: colorStyle.text,
+              backgroundColor: colorStyle.primary,
+            }}
+            className="basis-4/12 h-full min-h-80 flex justify-center items-center rounded-2xl"
+          >
+            <h1>COLOURS.IO</h1>
+          </div>
+          <div
+            className="grow h-full min-h-80 flex flex-row justify-between px-8 py-4 rounded-2xl"
+            style={{
+              ...modifiedBodyStyle,
+              color: colorStyle.text,
+              backgroundColor: colorStyle.secondary,
+            }}
+          >
+            <span className="flex flex-col gap-2 justify-end">
+              <span className="inline-flex gap-2">
+                <button>Services</button>
+                <button>Pricing</button>
+                <button>Projects</button>
+              </span>
+              <span className="inline-flex gap-2">
+                <button>About</button>
+                <button>Contact</button>
+              </span>
+              <p>© 2025 Colours.io. All rights reserved.</p>
+            </span>
+            <span className="flex flex-row gap-2 justify-end items-end">
+              <button>Privacy</button>
+              <button>Terms</button>
+            </span>
+          </div>
+        </div>
+
+        <div
+          className="grow h-full min-h-28 flex flex-row justify-between gap-4"
+          style={{
+            ...modifiedBodyStyle,
+            color: colorStyle.text,
+          }}
+        >
+          <button
+            style={{ backgroundColor: colorStyle.secondary }}
+            className="grow rounded-2xl"
+          >
+            Twitter
+          </button>
+          <button
+            style={{ backgroundColor: colorStyle.secondary }}
+            className="grow rounded-2xl"
+          >
+            Linked In
+          </button>
+          <button
+            style={{ backgroundColor: colorStyle.secondary }}
+            className="grow rounded-2xl"
+          >
+            Github
+          </button>
+          <button
+            style={{ backgroundColor: colorStyle.secondary }}
+            className="grow rounded-2xl"
+          >
+            Colours.io
+          </button>
+        </div>
+      </footer>
     </section>
   );
 };

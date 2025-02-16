@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useBodyStyle } from "../../ultils/BodyStyleContext";
+import { GoogleFont } from "../../ultils/GoogleFont";
 
 export function TypographyControls({
   heading,
@@ -20,8 +21,10 @@ export function TypographyControls({
       <h1 className="text-base text-[#969696] bg-[#f2f2f2] shadow-md w-fit max-w-36 px-4 py-1 rounded-md uppercase">
         {heading}
       </h1>
-
       <form>
+        <GoogleFont
+          onValueChange={(newValue) => updateTextStyle(`font`, newValue)}
+        />
         {Object.entries(style).map(([key, value]) => (
           <Input
             key={key}
@@ -45,6 +48,9 @@ const Input = ({ label, value, onValueChange }) => {
   function addSpaceToCamelCase(str) {
     return str.replace(/([a-z])([A-Z])/g, "$1 $2");
   }
+
+  if (label == "font") return null;
+
   return (
     <label className="flex flex-row gap-3 items-center">
       <span className="inline text-sm text-[#626262] min-w-[80px] max-w- capitalize">

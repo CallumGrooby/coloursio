@@ -36,11 +36,8 @@ function App() {
         <BodyStyleProvider>
           <HeaderStyleProvider>
             <ColorsProvider>
-              {/* <div className="w-[240px] bg-[#D9D9D9]">
-              <GoogleFont />
               <StyleBar />
-            </div> */}
-              <Sidebar />
+
               <Typography
                 sectionVisibale={section1Visible}
                 toggleVisable={toggleSection1}

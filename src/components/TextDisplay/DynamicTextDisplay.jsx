@@ -1,36 +1,19 @@
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
+import { formatStyle } from "../../ultils/formatStyles";
 
 const DynamicTextDisplay = ({
   headerText,
-  fontFamily,
+  style,
   messageToDisplay,
   sizes,
   cssUnit,
-  changeableStyle,
 }) => {
-  console.log(changeableStyle);
-
   const [modifiedStyle, setModifiedStyle] = useState({});
   useEffect(() => {
-    // Store each property in a variable and add units where needed
-    const fontWeight = changeableStyle.fontWeight || "normal";
-    const lineHeight = changeableStyle.lineHeight
-      ? `${changeableStyle.lineHeight}rem`
-      : "1.5rem";
-    const letterSpacing = changeableStyle.letterSpacing
-      ? `${changeableStyle.letterSpacing}rem`
-      : "0.05rem";
-
-    // Create the modified style object
-    const newStyle = {
-      fontWeight,
-      lineHeight,
-      letterSpacing,
-    };
-
-    setModifiedStyle(newStyle); // Update the state with the modified style
-  }, [changeableStyle]); // This will run every time the style prop changes
+    const newStyle = formatStyle(style);
+    setModifiedStyle(newStyle);
+  }, [style]); // This will run every time the style prop changes
 
   const rootFontSize = parseFloat(
     window.getComputedStyle(document.documentElement).fontSize
@@ -55,17 +38,25 @@ const DynamicTextDisplay = ({
           {headerText}
         </h1>
       </header>
-      <div style={{ fontFamily }} className="space-y-2 text-start">
+      <div
+        style={{ fontFamily: modifiedStyle.fontFamily }}
+        className="space-y-2 text-start"
+      >
         <div className="space-y-2 text-start">
           {sizes.map((size, index) => {
             const headingTag = `h${index + 1}`;
             const displaySize = getSizeInUnit(size.px);
+
             return React.createElement(
               headingTag,
               {
                 key: index,
                 className: `text-${size.className} text-gray-700`,
-                style: modifiedStyle,
+                style: {
+                  fontWeight: modifiedStyle.fontWeight,
+                  lineHeight: modifiedStyle.lineHeight,
+                  letterSpacing: modifiedStyle.letterSpacing,
+                },
               },
               <>
                 {messageToDisplay}
