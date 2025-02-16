@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { test, expect, vi } from "vitest"; // Import test utilities if globals are off
 import { StyleBar } from "./StyleBar";
-import { HeaderStyleProvider } from "../../ultils/HeaderStyleContext";
-import { BodyStyleProvider } from "../../ultils/BodyStyleContext";
+import { HeaderStyleProvider } from "../../utils/HeaderStyleContext";
+import { BodyStyleProvider } from "../../utils/BodyStyleContext";
 
 test("renders all ColourButton components with correct text'", () => {
   render(

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useBodyStyle } from "../../ultils/BodyStyleContext";
-import { GoogleFont } from "../../ultils/GoogleFont";
+import { useBodyStyle } from "../../contexts/BodyStyleContext";
+import { GoogleFont } from "../../utils/GoogleFont";
 
 export function TypographyControls({
   heading,

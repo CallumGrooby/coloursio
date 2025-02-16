@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
-import { formatStyle } from "../../ultils/formatStyles";
+import { formatStyle } from "../../utils/formatStyles";
 
 const DynamicTextDisplay = ({
   headerText,

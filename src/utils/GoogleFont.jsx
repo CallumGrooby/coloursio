@@ -1,7 +1,6 @@
 // src/components/GoogleFont.jsx
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import { useFont } from "./FontContext";
 
 const selectBoxStyles = {
   control: (styles, { isFocused }) => ({
@@ -76,20 +75,6 @@ const selectBoxStyles = {
     },
   }),
 };
-
-// const selectBoxStyles = {
-//   control: (styles) => ({
-//     ...styles,
-//     backgroundColor: "white",
-//   }),
-//   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-//     return {
-//       ...styles,
-//       color: "black",
-//       cursor: isDisabled ? "not-allowed" : "default",
-//     };
-//   },
-// };
 
 export const GoogleFont = ({ onValueChange }) => {
   const [options, setFontOptions] = useState([]);

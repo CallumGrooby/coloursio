@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useFont } from "../../ultils/FontContext";
 import DynamicTextDisplay from "./DynamicTextDisplay";
-import { useHeaderStyle } from "../../ultils/HeaderStyleContext";
-import { useBodyStyle } from "../../ultils/BodyStyleContext";
+import { useHeaderStyle } from "../../utils/HeaderStyleContext";
+import { useBodyStyle } from "../../contexts/BodyStyleContext";
 
 const TextDisplay = ({ messageToDisplay }) => {
   let rootFontSize = window.getComputedStyle(document.documentElement).fontSize;

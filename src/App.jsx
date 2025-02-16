@@ -1,18 +1,10 @@
 import { useState } from "react";
-import { GoogleFont } from "./ultils/GoogleFont";
-import { FontProvider } from "./ultils/FontContext";
-import TextDisplay from "./components/TextDisplay/TextDisplay";
-import { ColourPicker } from "./components/colourPicker/colourPicker";
 import { StyleBar } from "./components/styleBar/StyleBar";
-import { BodyStyleProvider, useBodyStyle } from "./ultils/BodyStyleContext";
-import {
-  HeaderStyleProvider,
-  useHeaderStyle,
-} from "./ultils/HeaderStyleContext";
+import { BodyStyleProvider } from "./contexts/BodyStyleContext";
+import { HeaderStyleProvider } from "./utils/HeaderStyleContext";
 import { Typography } from "./components/sections/Typography";
-import { Sidebar } from "./components/sections/Sidebar";
-import { LandingPage } from "./components/sections/LandingPage";
-import { ColorsProvider } from "./ultils/ColorsContext";
+import { LandingPage } from "./components/sections/Website/LandingPage";
+import { ColorsProvider } from "./contexts/ColorsContext";
 
 function App() {
   const [section1Visible, setSection1Visible] = useState(true);
@@ -32,24 +24,22 @@ function App() {
 
   return (
     <section className="flex flex-row h-screen">
-      <FontProvider>
-        <BodyStyleProvider>
-          <HeaderStyleProvider>
-            <ColorsProvider>
-              <StyleBar />
+      <BodyStyleProvider>
+        <HeaderStyleProvider>
+          <ColorsProvider>
+            <StyleBar />
 
-              <Typography
-                sectionVisibale={section1Visible}
-                toggleVisable={toggleSection1}
-              />
-              <LandingPage
-                sectionVisibale={section2Visible}
-                toggleVisable={toggleSection2}
-              />
-            </ColorsProvider>
-          </HeaderStyleProvider>
-        </BodyStyleProvider>
-      </FontProvider>
+            <Typography
+              sectionVisibale={section1Visible}
+              toggleVisable={toggleSection1}
+            />
+            <LandingPage
+              sectionVisibale={section2Visible}
+              toggleVisable={toggleSection2}
+            />
+          </ColorsProvider>
+        </HeaderStyleProvider>
+      </BodyStyleProvider>
     </section>
   );
 }

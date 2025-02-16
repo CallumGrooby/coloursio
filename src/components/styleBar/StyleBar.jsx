@@ -4,9 +4,9 @@ import { HexColorPicker } from "react-colorful";
 import axios from "axios";
 import { ColorInput } from "../colorInput/colorInput";
 import { TypographyControls } from "../typographyControls/TypographyControls";
-import { useBodyStyle } from "../../ultils/BodyStyleContext"; // Import the context
-import { useHeaderStyle } from "../../ultils/HeaderStyleContext";
-import { useColors } from "../../ultils/ColorsContext";
+import { useBodyStyle } from "../../contexts/BodyStyleContext"; // Import the context
+import { useHeaderStyle } from "../../utils/HeaderStyleContext";
+import { useColors } from "../../contexts/ColorsContext";
 
 export const StyleBar = () => {
   const [textColour, setTextColour] = useState("");
