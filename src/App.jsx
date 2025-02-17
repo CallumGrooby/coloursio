@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { StyleBar } from "./components/styleBar/StyleBar";
 import { BodyStyleProvider } from "./contexts/BodyStyleContext";
 import { HeaderStyleProvider } from "./utils/HeaderStyleContext";
-import { Typography } from "./components/sections/Typography";
 import { LandingPage } from "./components/sections/Website/LandingPage";
 import { ColorsProvider } from "./contexts/ColorsContext";
+import { StyleBar } from "./components/sections/styleBar/StyleBar";
+import { Typography } from "./components/sections/typography/Typography";
 
 function App() {
   const [section1Visible, setSection1Visible] = useState(true);
@@ -30,11 +30,11 @@ function App() {
             <StyleBar />
 
             <Typography
-              sectionVisibale={section1Visible}
+              sectionVisiablity={section1Visible}
               toggleVisable={toggleSection1}
             />
             <LandingPage
-              sectionVisibale={section2Visible}
+              sectionVisiablity={section2Visible}
               toggleVisable={toggleSection2}
             />
           </ColorsProvider>

@@ -28,7 +28,7 @@ const TextDisplay = ({ messageToDisplay }) => {
   };
 
   return (
-    <div className="flex flex-col items-start justify-center h-full">
+    <div className="flex flex-col items-start justify-center h-auto grow">
       <div>
         <button
           className={`text-unit-button ${activeIndex === 0 ? "active" : ""}`}

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { ColourPicker } from "../colourPicker/colourPicker";
+import { ColourPicker } from "../../colourPicker/colourPicker";
 import { HexColorPicker } from "react-colorful";
 import axios from "axios";
-import { ColorInput } from "../colorInput/colorInput";
-import { TypographyControls } from "../typographyControls/TypographyControls";
-import { useBodyStyle } from "../../contexts/BodyStyleContext"; // Import the context
-import { useHeaderStyle } from "../../utils/HeaderStyleContext";
-import { useColors } from "../../contexts/ColorsContext";
+import { ColorInput } from "../../colorInput/colorInput";
+import { TypographyControls } from "../../typographyControls/TypographyControls";
+import { useBodyStyle } from "../../../contexts/BodyStyleContext"; // Import the context
+import { useHeaderStyle } from "../../../utils/HeaderStyleContext";
+import { useColors } from "../../../contexts/ColorsContext";
 
 export const StyleBar = () => {
   const [textColour, setTextColour] = useState("");

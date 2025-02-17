@@ -38,7 +38,7 @@ export function TypographyControls({
   );
 }
 
-const Input = ({ label, value, onValueChange }) => {
+export const Input = ({ label, value, onValueChange }) => {
   const [inputValue, setInputValue] = useState(value); // Maintain local state
 
   const handleChange = (e) => {
@@ -53,7 +53,7 @@ const Input = ({ label, value, onValueChange }) => {
 
   return (
     <label className="flex flex-row gap-3 items-center">
-      <span className="inline text-sm text-[#626262] min-w-[80px] max-w- capitalize">
+      <span className="inline text-sm text-[#626262] min-w-[80px] capitalize">
         {addSpaceToCamelCase(label)}
       </span>
       <input

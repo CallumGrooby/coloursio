@@ -11,8 +11,15 @@ import { HowItWorksSection } from "./howItWorksSection/HowItWorksSection";
 import { PricingSection } from "./pricingSection/PricingSection";
 import { TestimonialsSection } from "./testimonialsSection/TestimonialsSection";
 import { FooterSection } from "./footerSection/FooterSection";
+import { FullScreenButton } from "./reusableComponents/button/FullScreenButton";
 
-export const LandingPage = ({ sectionVisibale, toggleVisable }) => {
+import MobileIcon from "../../../assets/mobile.svg?react";
+import DesktopIcon from "../../../assets/desktop.svg?react";
+
+export const LandingPage = ({
+  sectionVisiablity,
+  toggleVisable: toggleVisablity,
+}) => {
   const [currentView, setView] = useState(true);
 
   const toggleView = () => {
@@ -22,20 +29,34 @@ export const LandingPage = ({ sectionVisibale, toggleVisable }) => {
   return (
     <div
       className={`transition-all duration-300 ${
-        sectionVisibale ? "inline" : "hidden"
+        sectionVisiablity ? "inline" : "hidden"
       } bg-gray-300 flex-1 overflow-y-scroll`}
     >
-      <div>
-        <button
+      {/* <div>
+
+
+ <button
           onClick={toggleVisable}
           className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
         >
           Full Screen Section 2
         </button>
+
         <button onClick={toggleView}>
           {currentView ? "Mobile" : "Desktop"}
         </button>
-      </div>
+      </div> */}
+
+      <nav className="flex flex-row justify-end gap-2 px-2 py-2 sticky top-0 bg-gray-400">
+        <button onClick={toggleView}>
+          {currentView ? (
+            <MobileIcon className="w-8 h-8 text-white group-hover:text-gray-800" />
+          ) : (
+            <DesktopIcon className="w-8 h-8 text-white group-hover:text-gray-800" />
+          )}
+        </button>
+        <FullScreenButton toggleVisablity={toggleVisablity} />
+      </nav>
 
       <Website currentView={currentView} />
     </div>
