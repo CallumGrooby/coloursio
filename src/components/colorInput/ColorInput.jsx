@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import axios from "axios";
+import { getTextColor } from "../../utils/ReturnTextColor";
+import Tick from "../../assets/tick.svg?react";
+import Warning from "../../assets/warning.svg?react";
+import Cross from "../../assets/cross.svg?react";
 
 export const ColorInput = ({
   text,
@@ -10,7 +14,6 @@ export const ColorInput = ({
 }) => {
   const [showColourPicker, setShowColourPicker] = useState(false);
   const [color, setColor] = useState(defaultColor);
-  const [ContrastPass, setContrastPass] = useState();
   const [isBackgroundLight, setIsBackgroundLight] = useState(true);
 
   // Handle color change and call onChange prop
@@ -31,20 +34,71 @@ export const ColorInput = ({
   };
 
   useEffect(() => {
-    getTextColor(color);
-  }, [color]);
+    const temp = getTextColor(color);
+    setIsBackgroundLight(temp);
+  }, [color, textColor]);
+
+  const pickerRef = useRef(null);
+
+  const handleInputFocus = () => setShowColourPicker(true);
+  const handleInputBlur = (event) => {
+    // Delay hiding to allow checking if click is inside picker
+    setTimeout(() => {
+      if (
+        pickerRef.current &&
+        pickerRef.current.contains(document.activeElement)
+      ) {
+        return;
+      }
+      setShowColourPicker(false);
+    }, 100);
+  };
+
+  return (
+    <div className="relative inline-flex flex-col ">
+      <h1 className="text-base">{text} Colour</h1>
+      <span className="relative">
+        <input
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          value={color}
+          onChange={handleInputChange}
+          style={{ backgroundColor: color }}
+          className={`${isBackgroundLight ? "text-black" : "text-white"}
+        rounded-md border border-[#C0C0C0] shadow-sm w-full px-3 py-1 bg-[#E7E7E7] text-[#969696]`}
+        />
+        <ConstrastChecker backgroundColor={color} textColor={textColor} />
+      </span>
+
+      {showColourPicker && (
+        <div
+          ref={pickerRef}
+          className="absolute z-50 top-1/2 left-full transform  -translate-y-1/2 px-2"
+          onBlur={handleInputBlur}
+        >
+          <HexColorPicker color={color} onChange={handleColorChange} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+const ConstrastChecker = (props) => {
+  const [contrastPass, setContrastPass] = useState({
+    passLevel: "",
+    ratio: "",
+  });
 
   useEffect(() => {
-    CheckContrast(textColor, color);
-  }, [textColor, color]);
+    CheckContrast(props.textColor, props.backgroundColor);
+  }, [props.textColor, props.backgroundColor]);
 
-  const handleShowPicker = () => {
-    setShowColourPicker(!showColourPicker);
-  };
+  useEffect(() => {
+    console.log(contrastPass);
+  }, [contrastPass]);
 
   const CheckContrast = (textColor, colourToCheck) => {
     if (!textColor) return;
-
     const normalizedTextColor = textColor.slice(1);
     const normalizedSecondaryColor = colourToCheck.slice(1);
 
@@ -62,6 +116,7 @@ export const ColorInput = ({
           passLevel: passLevel,
           ratio: ratio,
         };
+
         setContrastPass(newObj);
       })
       .catch((error) => {
@@ -75,37 +130,75 @@ export const ColorInput = ({
     return "Failed";
   }
 
-  const getTextColor = (bgColor) => {
-    if (!bgColor.startsWith("#") || bgColor.length !== 7) return "text-black";
+  return <>{getContrastIndicator(contrastPass)}</>;
+};
 
-    const r = parseInt(bgColor.slice(1, 3), 16);
-    const g = parseInt(bgColor.slice(3, 5), 16);
-    const b = parseInt(bgColor.slice(5, 7), 16);
+const getContrastIndicator = (contrastPass) => {
+  switch (contrastPass.passLevel) {
+    case "AAA":
+      return (
+        <ContrastToolTip
+          contrastPass={contrastPass}
+          backgroundColor={"bg-green-600"}
+        >
+          <Tick />
+        </ContrastToolTip>
+      );
+    case "AA":
+      return (
+        <ContrastToolTip
+          contrastPass={contrastPass}
+          backgroundColor={"bg-yellow-500"}
+        >
+          <Warning />
+        </ContrastToolTip>
+      );
+    case "Failed":
+      return (
+        <ContrastToolTip
+          contrastPass={contrastPass}
+          backgroundColor={"bg-red-600"}
+        >
+          <Cross />
+        </ContrastToolTip>
+      );
+    default:
+      return null;
+  }
+};
 
-    // Calculate luminance
-    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-
-    const textColor = luminance > 0.5 ? true : false;
-    setIsBackgroundLight(textColor);
-  };
-
+const ContrastToolTip = (props) => {
   return (
-    <span className="input-field relative">
-      <h1 className="text-base">{text} Colour</h1>
-      <input
-        onClick={handleShowPicker}
-        value={color}
-        onChange={handleInputChange} // Use handleInputChange to update state and call onChange
-        style={{ backgroundColor: color }}
-        className={`${isBackgroundLight ? "text-black" : "text-white"}`}
-      />
-      <span
-        className={`${
-          showColourPicker ? "inline-flex" : "hidden"
-        } absolute z-50`}
+    <div className="group absolute z-50 top-1/2 left-full transform -translate-x-full p-2 -translate-y-1/2">
+      <div className="flex items-center justify-center size-6 border-2 border-gray-500 rounded-full p-1">
+        {props.children}
+      </div>
+      {/* group-hover:inline-block */}
+      <div
+        className={`${props.backgroundColor} absolute z-50 top-1/2 left-full transform  -translate-y-1/2 ml-2 rounded-md hidden group-hover:inline-block `}
       >
-        <HexColorPicker color={color} onChange={handleColorChange} />
-      </span>
-    </span>
+        <span className="absolute top-1/2 right-full transform rounded-sm  -translate-y-1/2 translate-x-1/2 -z-10 rotate-45 size-3 bg-inherit inline-flex"></span>
+
+        <div className="text-white w-full h-full px-4 py-2 flex flex-col gap-1 justify-center items-center ">
+          <h1 className="text-base whitespace-nowrap">
+            {props.contrastPass.passLevel} - {props.contrastPass.ratio}
+          </h1>
+          <button className="text-sm">Learn More</button>
+        </div>
+      </div>
+    </div>
   );
 };
+
+{
+  /* <div className="text-red-500 absolute top-1/2 left-full transform -translate-x-full p-2 -translate-y-1/2">
+          <div className="group text-2xl border-white border rounded-full size-8 flex justify-center items-center relative">
+            <h1>✗</h1>
+            <div className="hidden group-hover:inline">
+              <h1>
+                {contrastPass.passLevel} - {contrastPass.ratio}
+              </h1>
+            </div>
+          </div>
+        </div> */
+}

@@ -39,7 +39,7 @@ const selectBoxStyles = {
     width: "100%", // Ensures the text takes up full space
     textOverflow: "ellipsis", // Adds "..." if text is too long
     whiteSpace: "nowrap",
-    overflow: "hidden",
+    // overflow: "hidden",
   }),
   dropdownIndicator: (styles) => ({
     ...styles,
@@ -54,12 +54,12 @@ const selectBoxStyles = {
     width: "100%",
     maxWidth: "116px", // Ensures dropdown matches max width
     maxHeight: "200px",
-    overflow: "hidden",
+    // overflow: "hidden",
   }),
   menuList: (styles) => ({
     ...styles,
     maxHeight: "200px",
-    overflowY: "auto",
+    // overflowY: "auto",
     scrollbarWidth: "thin",
     scrollbarColor: "#C0C0C0 #E7E7E7",
     "&::-webkit-scrollbar": {

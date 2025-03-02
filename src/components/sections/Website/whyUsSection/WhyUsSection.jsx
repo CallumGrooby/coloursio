@@ -1,18 +1,18 @@
 const whyUsContent = [
   {
     icon: "",
-    title: "Effortless Design",
-    text: "Create stunning designs without needing expertise in colour or typography.",
+    title: "Find the perfect font to match your vision.",
+    text: "Experiment with a wide range of fonts to create a unique and cohesive design. Ensure your typography complements your brand's style and enhances readability.",
   },
   {
     icon: "",
-    title: "Real-Time Customization",
-    text: "See changes instantly and refine your design with ease.",
+    title: "Generate Tailored Colour Palettes",
+    text: "Easily create, customize, and visualize your color palette. Design stunning color combinations that enhance your website’s visual appeal and user experience. Adjust shades, contrasts, and accents effortlessly.",
   },
   {
     icon: "",
-    title: "Crafted for Every Creative",
-    text: "Perfect for designers, marketers, and hobbyists—flexible and intuitive tools for all.",
+    title: "Seamlessly export your custom color palette into CSS formats.",
+    text: "Export your palettes in multiple formats, including HSV, HSL, RGB, and HEX, making it easy to integrate them into your project’s code.",
   },
 ];
 
@@ -20,40 +20,97 @@ export const WhyUsSection = ({
   modifiedHeaderStyle,
   modifiedBodyStyle,
   colorStyle,
+  currentView,
 }) => {
   return (
     <section
-      className="max-w-[972px] w-full bg-gray-400 rounded-2xl px-16 py-16 shadow-2xl"
-      style={{ background: colorStyle.secondary }}
+      className={`${
+        currentView ? "w-full px-16 py-4" : "max w-[360px] px-2 py-4"
+      } flex flex-col justify-center gap-6 relative min-h-[600px]`}
+      style={{
+        color: colorStyle.background,
+        backgroundColor: colorStyle.secondary,
+      }}
     >
-      <h2
-        className="uppercase"
-        style={{ ...modifiedBodyStyle, color: colorStyle.primary }}
-      >
-        Why Us
-      </h2>
       <h1
-        style={{ ...modifiedHeaderStyle, color: colorStyle.text }}
-        className="max-w-96 w-full"
+        style={{ ...modifiedHeaderStyle, color: colorStyle.background }}
+        className="text-start"
       >
-        Crafting Perfection <br></br> One Click at a Time
+        Effortlessly Create Stunning <br /> Color Palettes & Typography
       </h1>
 
-      <div className="w-full flex flex-row gap-8 mt-8">
-        {whyUsContent.map((content, index) => (
+      <div className={`flex gap-4 ${currentView ? "flex-row" : "flex-col"}`}>
+        {whyUsContent.map((content, index) => {
+          return (
+            <ContentSection
+              key={index}
+              index={index}
+              modifiedHeaderStyle={modifiedHeaderStyle}
+              modifiedBodyStyle={modifiedBodyStyle}
+              colorStyle={colorStyle}
+              content={content}
+              currentView={currentView}
+            />
+          );
+        })}
+      </div>
+
+      {/* <div className="absolute overflow-hidden top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex flex-row gap-24 items-center justify-center">
+        {Array.from({ length: 16 }).map((_, index) => (
           <div
             key={index}
-            className="p-2"
-            style={{ ...modifiedBodyStyle, color: colorStyle.text }}
-          >
-            <span className="inline-flex bg-gray-600 size-10"></span>
-            <h1 className="!font-bold" style={{ color: colorStyle.primary }}>
-              {content.title}
-            </h1>
-            <p>{content.text}</p>
-          </div>
+            className="block  min-w-[1px] h-full"
+            style={{
+              backgroundColor: colorStyle.background,
+            }}
+          />
         ))}
-      </div>
+      </div> */}
     </section>
+  );
+};
+
+const ContentSection = (props) => {
+  // Destructure to make things cleaner
+  const {
+    index,
+    modifiedHeaderStyle,
+    modifiedBodyStyle,
+    colorStyle,
+    content,
+    currentView,
+  } = props;
+
+  // Determine if it's the first item (index === 0)
+  const isFirstItem = index === 0;
+
+  return (
+    <div
+      key={index}
+      className={`px-3 basis-1/3 rounded-xl z-40 min-h-48 py-4`}
+      style={{
+        backgroundColor: isFirstItem
+          ? colorStyle.primary
+          : colorStyle.secondary,
+        border: isFirstItem ? "none" : `1px solid ${colorStyle.primary}`,
+      }}
+    >
+      <h2
+        style={{
+          ...modifiedHeaderStyle,
+          color: isFirstItem ? colorStyle.secondary : colorStyle.primary,
+        }}
+      >
+        {content.title}
+      </h2>
+      <p
+        style={{
+          ...modifiedBodyStyle,
+          color: isFirstItem ? colorStyle.secondary : colorStyle.primary,
+        }}
+      >
+        {content.text}
+      </p>
+    </div>
   );
 };

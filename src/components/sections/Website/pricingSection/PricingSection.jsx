@@ -6,26 +6,37 @@ export const PricingSection = ({
   modifiedHeaderStyle,
   modifiedBodyStyle,
   colorStyle,
+  currentView,
 }) => {
   return (
-    <section className="max-w-[972px] w-full mx-auto">
+    <section
+      className={`${
+        currentView ? "w-full" : "max w-[360px]"
+      } flex flex-col items-center justify-center gap-6 mb-8`}
+    >
       <div
         className="flex flex-col gap-3 justify-center items-center max-w-[972px] w-full"
         style={{ color: colorStyle.text }}
       >
-        <h2 style={modifiedBodyStyle}>Our Mission</h2>
-        <h1 style={modifiedHeaderStyle} className="text-center">
-          Helping you visualise the perfect
-          <br /> colours for your website.
-        </h1>
-        <p style={modifiedBodyStyle} className="max-w-[480px] text-center">
-          Thousands of designers, marketers, and hobbyists have transformed
-          their designs with perfect colour and font combinations.
-        </p>
+        <header>
+          <h1 style={modifiedHeaderStyle} className="text-center mb-4">
+            Why Choose Colours.io?
+          </h1>
+          <p
+            style={modifiedBodyStyle}
+            className="max-w-[480px] text-center mb-4"
+          >
+            Join thousands of designers, marketers, and hobbyists who use
+            Colours.io to create stunning designs effortlessly.
+          </p>
+        </header>
 
         <div className="flex flex-row gap-16">
           <div className="flex flex-col gap-1 items-center">
-            <h1 style={modifiedHeaderStyle} className="italic">
+            <h1
+              style={{ ...modifiedHeaderStyle, color: colorStyle.secondary }}
+              className="italic"
+            >
               95%
             </h1>
             <h2 style={modifiedBodyStyle} className="text-center">
@@ -33,7 +44,10 @@ export const PricingSection = ({
             </h2>
           </div>
           <div className="flex flex-col gap-1 items-center">
-            <h1 style={modifiedHeaderStyle} className="italic">
+            <h1
+              style={{ ...modifiedHeaderStyle, color: colorStyle.secondary }}
+              className="italic"
+            >
               50k+
             </h1>
             <h2 style={modifiedBodyStyle} className="text-center">
@@ -41,7 +55,10 @@ export const PricingSection = ({
             </h2>
           </div>
           <div className="flex flex-col gap-1 items-center">
-            <h1 style={modifiedHeaderStyle} className="italic">
+            <h1
+              style={{ ...modifiedHeaderStyle, color: colorStyle.secondary }}
+              className="italic"
+            >
               120+
             </h1>
             <h2 style={modifiedBodyStyle} className="text-center">
@@ -50,15 +67,20 @@ export const PricingSection = ({
           </div>
         </div>
 
-        <section className="flex flex-row flex-wrap gap-2 w-full box-content">
-          {pricingPlans.map((content, index) => {
+        <section
+          className={`flex flex-row flex-wrap gap-2 w-full box-content ${
+            currentView ? "flex-row" : "flex-col"
+          }`}
+        >
+          {pricingPlans.map((title, index) => {
             return (
               <PricingCard
                 key={index}
+                index={index}
                 modifiedHeaderStyle={modifiedHeaderStyle}
                 modifiedBodyStyle={modifiedBodyStyle}
                 colorStyle={colorStyle}
-                content={content}
+                title={title}
               />
             );
           })}

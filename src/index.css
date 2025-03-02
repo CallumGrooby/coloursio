@@ -32,3 +32,7 @@
 .text-unit-button.active {
   @apply bg-[#b9b9b9];
 }
+
+.website-button {
+  @apply px-4 py-3 rounded-xl;
+}

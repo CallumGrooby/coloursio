@@ -32,22 +32,7 @@ export const LandingPage = ({
         sectionVisiablity ? "inline" : "hidden"
       } bg-gray-300 flex-1 overflow-y-scroll`}
     >
-      {/* <div>
-
-
- <button
-          onClick={toggleVisable}
-          className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
-        >
-          Full Screen Section 2
-        </button>
-
-        <button onClick={toggleView}>
-          {currentView ? "Mobile" : "Desktop"}
-        </button>
-      </div> */}
-
-      <nav className="flex flex-row justify-end gap-2 px-2 py-2 sticky top-0 bg-gray-400">
+      <nav className="flex flex-row justify-end gap-2 px-2 py-2 sticky top-0 bg-gray-400 z-50">
         <button onClick={toggleView}>
           {currentView ? (
             <MobileIcon className="w-8 h-8 text-white group-hover:text-gray-800" />
@@ -63,7 +48,7 @@ export const LandingPage = ({
   );
 };
 
-const Website = () => {
+const Website = (props) => {
   const { headerStyle } = useHeaderStyle();
   const { bodyStyle } = useBodyStyle();
   const { colorStyle } = useColors();
@@ -82,12 +67,17 @@ const Website = () => {
   }, [bodyStyle]);
 
   return (
-    <main className="flex flex-col gap-16 items-center w-full px-4 sm:px-8 lg:px-16">
+    <main
+      className={`flex flex-col items-center w-full ${
+        props.currentView ? "max-w-full" : "max-w-[360px]"
+      } mx-auto`}
+    >
       {/* Hero Section */}
       <HeroSection
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
         colorStyle={colorStyle}
+        currentView={props.currentView}
       />
 
       {/* Why Us Section */}
@@ -95,6 +85,7 @@ const Website = () => {
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
         colorStyle={colorStyle}
+        currentView={props.currentView}
       />
 
       {/* How It Works Section */}
@@ -102,13 +93,17 @@ const Website = () => {
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
         colorStyle={colorStyle}
+        currentView={props.currentView}
       />
+
+      {/* -------------------------------------------------------------  NEED TO ADD COLOR PALLET SECTION */}
 
       {/* Pricing Section */}
       <PricingSection
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
         colorStyle={colorStyle}
+        currentView={props.currentView}
       />
 
       {/* Testimonials Section */}
@@ -116,6 +111,7 @@ const Website = () => {
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
         colorStyle={colorStyle}
+        currentView={props.currentView}
       />
 
       {/* Footer Section */}
@@ -123,6 +119,7 @@ const Website = () => {
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
         colorStyle={colorStyle}
+        currentView={props.currentView}
       />
     </main>
   );

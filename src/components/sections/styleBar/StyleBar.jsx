@@ -9,12 +9,6 @@ import { useHeaderStyle } from "../../../utils/HeaderStyleContext";
 import { useColors } from "../../../contexts/ColorsContext";
 
 export const StyleBar = () => {
-  const [textColour, setTextColour] = useState("");
-  const [backgroundColour, setBackgroundColour] = useState("");
-  const [primaryColour, setPrimaryColour] = useState("");
-  const [secondaryColour, setSecondaryColour] = useState("");
-  const [accentColour, setAccentColour] = useState("");
-
   const { headerStyle, setHeaderStyle } = useHeaderStyle();
   const { bodyStyle, setBodyStyle } = useBodyStyle();
   const { colorStyle, setColorStyle } = useColors();
@@ -35,7 +29,7 @@ export const StyleBar = () => {
   };
 
   return (
-    <div className="w-[240px] bg-[#D9D9D9]">
+    <div className="w-[240px] bg-[#D9D9D9] overflow-visible">
       <TypographyControls
         heading={"headings"}
         onValueChange={(key, value) => {
@@ -52,7 +46,7 @@ export const StyleBar = () => {
         style={bodyStyle}
       />
 
-      <section className="flex flex-col gap-2 px-3">
+      <section className="flex flex-col gap-2 px-3 overflow-visible">
         <h1 className="text-base text-[#969696] bg-[#f2f2f2] shadow-md w-fit max-w-36 px-4 py-1 rounded-md uppercase">
           Colours
         </h1>
@@ -70,7 +64,7 @@ export const StyleBar = () => {
           onChange={(value) => {
             updateTextColour("background", value);
           }}
-          textColor={textColour}
+          textColor={colorStyle.text}
         />
         <ColorInput
           text={"Primary"}
@@ -78,6 +72,7 @@ export const StyleBar = () => {
           onChange={(value) => {
             updateTextColour("primary", value);
           }}
+          textColor={colorStyle.text}
         />
         <ColorInput
           text={"Secondary"}
@@ -85,6 +80,7 @@ export const StyleBar = () => {
           onChange={(value) => {
             updateTextColour("secondary", value);
           }}
+          textColor={colorStyle.text}
         />
         <ColorInput
           text={"Accent"}
@@ -92,6 +88,7 @@ export const StyleBar = () => {
           onChange={(value) => {
             updateTextColour("accent", value);
           }}
+          textColor={colorStyle.text}
         />
       </section>
     </div>
