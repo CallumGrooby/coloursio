@@ -32,14 +32,24 @@ export const WhyUsSection = ({
         backgroundColor: colorStyle.secondary,
       }}
     >
-      <h1
-        style={{ ...modifiedHeaderStyle, color: colorStyle.background }}
-        className="text-start"
+      <header
+        className={`  ${
+          currentView ? "max-w-[1440px] w-full mx-auto" : "flex-col"
+        }`}
       >
-        Effortlessly Create Stunning <br /> Color Palettes & Typography
-      </h1>
+        <h1
+          style={{ ...modifiedHeaderStyle, color: colorStyle.background }}
+          className="text-start"
+        >
+          Effortlessly Create Stunning <br /> Color Palettes & Typography
+        </h1>
+      </header>
 
-      <div className={`flex gap-4 ${currentView ? "flex-row" : "flex-col"}`}>
+      <div
+        className={`flex gap-4 ${
+          currentView ? "flex-row max-w-[1440px] mx-auto" : "flex-col"
+        }`}
+      >
         {whyUsContent.map((content, index) => {
           return (
             <ContentSection
@@ -55,17 +65,17 @@ export const WhyUsSection = ({
         })}
       </div>
 
-      {/* <div className="absolute overflow-hidden top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex flex-row gap-24 items-center justify-center">
+      <div className="absolute overflow-hidden top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex flex-row gap-24 items-center justify-center">
         {Array.from({ length: 16 }).map((_, index) => (
           <div
             key={index}
-            className="block  min-w-[1px] h-full"
+            className="block  min-w-[2px] h-full"
             style={{
-              backgroundColor: colorStyle.background,
+              backgroundColor: colorStyle.accent,
             }}
           />
         ))}
-      </div> */}
+      </div>
     </section>
   );
 };

@@ -40,7 +40,7 @@ export const HowItWorksSection = ({
   return (
     <section
       className={`${
-        currentView ? "w-full px-16 py-4" : "max w-[360px] px-2 py-4"
+        currentView ? "w-full py-4 max-w-[1440px]" : "max w-[360px] px-2 py-4"
       } flex flex-col justify-center gap-6 relative`}
     >
       <header className={` ${currentView ? "mt-20 mb-4" : "mt-8 mb-4"}`}>

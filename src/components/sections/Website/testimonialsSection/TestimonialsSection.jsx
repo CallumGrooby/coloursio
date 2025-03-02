@@ -16,7 +16,7 @@ const testimonials = [
 export const TestimonialsSection = ({ modifiedBodyStyle, colorStyle }) => {
   return (
     <section style={{ color: colorStyle.text }}>
-      <div className="flex flex-row  gap-4 max-w-[972px] w-full mx-auto">
+      <div className="flex flex-row  gap-4 max-w-[1440px] w-full mx-auto">
         {testimonials.map((content, index) => (
           <TestimonialCard
             key={index}

@@ -2,34 +2,15 @@ export const FooterSection = ({
   modifiedHeaderStyle,
   modifiedBodyStyle,
   colorStyle,
+  currentView,
 }) => {
   return (
     <footer
       style={{ color: colorStyle.text }}
-      className="flex flex-col gap-4 max-w-[972px] w-full mx-auto rounded-2xl"
+      className={`${
+        currentView ? "w-full py-4 max-w-[1440px]" : "max w-[360px] px-2 py-4"
+      } flex flex-col justify-center gap-6 relative min-h-[800px]`}
     >
-      <div
-        className="w-full flex flex-row justify-between items-center gap-16 rounded-2xl px-8 py-4"
-        style={{
-          ...modifiedBodyStyle,
-          color: colorStyle.text,
-          backgroundColor: colorStyle.secondary,
-        }}
-      >
-        <h1 style={modifiedHeaderStyle} className="w-full">
-          Designed to make creativity effortless.
-        </h1>
-        <button
-          style={{
-            ...modifiedBodyStyle,
-            color: colorStyle.text,
-            backgroundColor: colorStyle.primary,
-          }}
-          className="py-3 px-4 rounded-xl text-white w-full max-w-48"
-        >
-          How It Works
-        </button>
-      </div>
       <div className="w-full flex flex-row gap-4">
         <div
           style={{

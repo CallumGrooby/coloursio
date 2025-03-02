@@ -7,7 +7,7 @@ export const HeroSection = ({
   return (
     <section
       className={`${
-        currentView ? "w-full" : "max w-[360px]"
+        currentView ? "w-full max-w-[1440px]" : "max w-[360px]"
       } flex flex-col items-center justify-center gap-6 mt-56 mb-40`}
     >
       <h1
