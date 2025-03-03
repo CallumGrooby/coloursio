@@ -41,9 +41,9 @@ export const HowItWorksSection = ({
     <section
       className={`${
         currentView ? "w-full py-4 max-w-[1440px]" : "max w-[360px] px-2 py-4"
-      } flex flex-col justify-center gap-6 relative`}
+      } flex flex-col justify-center relative`}
     >
-      <header className={` ${currentView ? "mt-20 mb-4" : "mt-8 mb-4"}`}>
+      <header className={` ${currentView ? "mt-20 mb-12" : "mt-8 mb-4"}`}>
         <h1 style={{ ...modifiedHeaderStyle, color: colorStyle.text }}>
           Master your design with <span className="font-bold">Colours.io</span>
         </h1>

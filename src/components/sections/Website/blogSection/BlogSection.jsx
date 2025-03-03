@@ -43,30 +43,85 @@ export const BlogSection = ({
         currentView ? "w-full py-4 max-w-[1440px]" : "max w-[360px] px-2 py-4"
       } flex flex-col justify-center gap-6 relative min-h-[800px]`}
     >
-      <div className="grid grid-cols-9 grid-rows-7 gap-4 w-full h-full">
-        {sections.map((section, index) => (
-          <div
-            key={index}
-            className={`flex flex-col gap-2 min-h-48 justify-end bg-gray-400 rounded-2xl box-border px-4 py-2`}
-            style={{
-              gridArea: section.gridArea,
-              backgroundColor:
-                index === 0 ? colorStyle.primary : colorStyle.secondary,
-            }}
-          >
-            <ContentSection
-              index={index}
-              modifiedHeaderStyle={modifiedHeaderStyle}
-              modifiedBodyStyle={modifiedBodyStyle}
-              colorStyle={colorStyle}
-              title={section.title}
-              text={section.text}
-              currentView={currentView}
-            />
-          </div>
-        ))}
-      </div>
+      {currentView ? (
+        <DesktopLayout
+          sections={sections}
+          modifiedHeaderStyle={modifiedHeaderStyle}
+          modifiedBodyStyle={modifiedBodyStyle}
+          colorStyle={colorStyle}
+        />
+      ) : (
+        <MobileLayout
+          sections={sections}
+          modifiedHeaderStyle={modifiedHeaderStyle}
+          modifiedBodyStyle={modifiedBodyStyle}
+          colorStyle={colorStyle}
+        />
+      )}
     </section>
+  );
+};
+
+const DesktopLayout = ({
+  sections,
+  modifiedHeaderStyle,
+  modifiedBodyStyle,
+  colorStyle,
+}) => {
+  return (
+    <div className="grid grid-cols-9 grid-rows-7 gap-4 w-full h-full">
+      {sections.map((section, index) => (
+        <div
+          key={index}
+          className={`flex flex-col gap-2 min-h-48 justify-end bg-gray-400 rounded-2xl box-border px-4 py-2`}
+          style={{
+            gridArea: section.gridArea,
+            backgroundColor:
+              index === 0 ? colorStyle.primary : colorStyle.secondary,
+          }}
+        >
+          <ContentSection
+            index={index}
+            modifiedHeaderStyle={modifiedHeaderStyle}
+            modifiedBodyStyle={modifiedBodyStyle}
+            colorStyle={colorStyle}
+            title={section.title}
+            text={section.text}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const MobileLayout = ({
+  sections,
+  modifiedHeaderStyle,
+  modifiedBodyStyle,
+  colorStyle,
+}) => {
+  return (
+    <div className="flex flex-col gap-4 w-full p-4">
+      {sections.map((section, index) => (
+        <div
+          key={index}
+          className={`flex flex-col gap-2 min-h-48 justify-end bg-gray-400 rounded-2xl box-border px-4 py-2`}
+          style={{
+            gridArea: section.gridArea,
+            backgroundColor:
+              index === 0 ? colorStyle.primary : colorStyle.secondary,
+          }}
+        >
+          <ContentSection
+            title={section.title}
+            text={section.text}
+            modifiedHeaderStyle={modifiedHeaderStyle}
+            modifiedBodyStyle={modifiedBodyStyle}
+            colorStyle={colorStyle}
+          />
+        </div>
+      ))}
+    </div>
   );
 };
 
@@ -81,9 +136,9 @@ const ContentSection = (props) => {
   } = props;
 
   return (
-    <>
+    <li className={`${!currentView && "mt-36"}`}>
       <h1
-        className="text-xl font-bold mb-2"
+        className={`text-xl font-bold mb-2 `}
         style={{
           ...modifiedHeaderStyle,
           color: colorStyle.text,
@@ -92,11 +147,11 @@ const ContentSection = (props) => {
         {title}
       </h1>
       <p
-        className="text-sm"
+        className="text-sm h-full"
         style={{ ...modifiedBodyStyle, color: colorStyle.text }}
       >
         {text}
       </p>
-    </>
+    </li>
   );
 };

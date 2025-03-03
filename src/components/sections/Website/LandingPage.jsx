@@ -9,13 +9,13 @@ import { HeroSection } from "./heroSection/heroSection";
 import { WhyUsSection } from "./whyUsSection/WhyUsSection";
 import { HowItWorksSection } from "./howItWorksSection/HowItWorksSection";
 import { PricingSection } from "./pricingSection/PricingSection";
-import { TestimonialsSection } from "./testimonialsSection/TestimonialsSection";
 import { FooterSection } from "./footerSection/FooterSection";
 import { FullScreenButton } from "./reusableComponents/button/FullScreenButton";
 
 import MobileIcon from "../../../assets/mobile.svg?react";
 import DesktopIcon from "../../../assets/desktop.svg?react";
 import { BlogSection } from "./blogSection/blogSection";
+import { ContrastSection } from "./colourPalette/ContrastSection";
 
 export const LandingPage = ({
   sectionVisiablity,
@@ -92,6 +92,13 @@ const Website = (props) => {
 
       {/* How It Works Section */}
       <HowItWorksSection
+        modifiedHeaderStyle={modifiedHeaderStyle}
+        modifiedBodyStyle={modifiedBodyStyle}
+        colorStyle={colorStyle}
+        currentView={props.currentView}
+      />
+
+      <ContrastSection
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
         colorStyle={colorStyle}

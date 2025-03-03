@@ -17,6 +17,7 @@ import svgr from "vite-plugin-svgr"; // Import the plugin
 
 export default defineConfig({
   plugins: [svgr(), react()],
+
   test: {
     clearScreen: true,
     globals: true,
