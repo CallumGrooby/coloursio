@@ -16,34 +16,15 @@ import MobileIcon from "../../../assets/mobile.svg?react";
 import DesktopIcon from "../../../assets/desktop.svg?react";
 import { BlogSection } from "./blogSection/blogSection";
 import { ContrastSection } from "./colourPalette/ContrastSection";
+import { useOutletContext } from "react-router-dom";
 
-export const LandingPage = ({
-  sectionVisiablity,
-  toggleVisable: toggleVisablity,
-}) => {
-  const [currentView, setView] = useState(true);
-
-  const toggleView = () => {
-    setView(!currentView);
-  };
+export const LandingPage = () => {
+  const { currentView } = useOutletContext();
 
   return (
     <div
-      className={`transition-all duration-300 ${
-        sectionVisiablity ? "inline" : "hidden"
-      } bg-gray-300 flex-1 overflow-y-scroll`}
+      className={`transition-all duration-300 bg-gray-300 flex-1 overflow-y-scroll`}
     >
-      <nav className="flex flex-row justify-end gap-2 px-2 py-2 sticky top-0 bg-gray-400 z-50">
-        <button onClick={toggleView}>
-          {currentView ? (
-            <MobileIcon className="w-8 h-8 text-white group-hover:text-gray-800" />
-          ) : (
-            <DesktopIcon className="w-8 h-8 text-white group-hover:text-gray-800" />
-          )}
-        </button>
-        <FullScreenButton toggleVisablity={toggleVisablity} />
-      </nav>
-
       <Website currentView={currentView} />
     </div>
   );

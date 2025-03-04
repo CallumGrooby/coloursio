@@ -23,24 +23,25 @@ function App() {
   };
 
   return (
-    <section className="flex flex-row h-screen">
-      <BodyStyleProvider>
-        <HeaderStyleProvider>
-          <ColorsProvider>
-            <StyleBar />
+    <></>
+    // <section className="flex flex-row h-screen">
+    //   <BodyStyleProvider>
+    //     <HeaderStyleProvider>
+    //       <ColorsProvider>
+    //         <StyleBar />
 
-            <Typography
-              sectionVisiablity={section1Visible}
-              toggleVisable={toggleSection1}
-            />
-            <LandingPage
-              sectionVisiablity={section2Visible}
-              toggleVisable={toggleSection2}
-            />
-          </ColorsProvider>
-        </HeaderStyleProvider>
-      </BodyStyleProvider>
-    </section>
+    //         <Typography
+    //           sectionVisiablity={section1Visible}
+    //           toggleVisable={toggleSection1}
+    //         />
+    //         <LandingPage
+    //           sectionVisiablity={section2Visible}
+    //           toggleVisable={toggleSection2}
+    //         />
+    //       </ColorsProvider>
+    //     </HeaderStyleProvider>
+    //   </BodyStyleProvider>
+    // </section>
   );
 }
 export default App;
