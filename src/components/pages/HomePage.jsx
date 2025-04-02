@@ -5,7 +5,7 @@ import { ColorsProvider } from "../../contexts/ColorsContext";
 import { StyleBar } from "../sections/styleBar/StyleBar";
 import { Typography } from "../sections/typography/Typography";
 import { LandingPage } from "../sections/Website/LandingPage";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import MobileIcon from "../../assets/mobile.svg?react";
 import DesktopIcon from "../../assets/desktop.svg?react";
@@ -31,15 +31,22 @@ export const HomePage = () => {
     }
     if (location.pathname.includes("landingpage")) {
       return (
-        <button
-          onClick={toggleView}
-          className="bg-green-500 text-white px-4 py-2"
-        >
-          {currentView ? "Mobile View" : "Desktop View"}
+        <button onClick={toggleView} className="">
+          {currentView ? (
+            <MobileIcon className="size-8 p-1 box-content rounded-[4px] bg-stroke text-text opacity-animation " />
+          ) : (
+            <DesktopIcon className="size-8 p-1 box-content rounded-[4px] bg-stroke text-text opacity-animation " />
+          )}
         </button>
       );
     }
     return null;
+  };
+
+  const navigate = useNavigate();
+
+  const handleChange = (event) => {
+    navigate(event.target.value);
   };
 
   return (
@@ -50,13 +57,27 @@ export const HomePage = () => {
             <StyleBar />
 
             <section className="flex flex-col w-full h-full">
-              <nav className="flex flex-row gap-2">
-                <Link to="typography" className="hover:underline">
-                  Typography
-                </Link>
-                <Link to="landingpage" className="hover:underline">
-                  Landing Page
-                </Link>
+              <nav className="flex flex-row gap-2 justify-between px-3 py-4 bg-background overflow-visible">
+                <select
+                  onChange={handleChange}
+                  defaultValue=""
+                  className="
+
+                  min-w-48 p-2 border border-stroke rounded-lg shadow-md bg-white
+                  text-text cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#9da5ae]
+
+                 "
+                >
+                  {/*  min-w-48 p-2 border border-gray-300 rounded-lg shadow-md bg-white
+                  text-gray-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 */}
+                  <option value="" disabled>
+                    Select a page
+                  </option>
+                  <option value="typography">Typography</option>
+                  <option value="landingpage">Landing Page</option>
+                  <option value="blog">Blog</option>
+                </select>
+
                 {renderControls()}
               </nav>
 
@@ -73,7 +94,7 @@ const InputField = (props) => {
   const { textInput, handleTextInput } = props;
 
   return (
-    <nav className="flex flex-row justify-between px-2 py-2 sticky top-0 bg-gray-400 w-full">
+    <nav className="">
       <label className="flex flex-row gap-3 items-center">
         <span className="inline text-sm text-[#626262] min-w-[80px] w-fit capitalize">
           Enter new text:

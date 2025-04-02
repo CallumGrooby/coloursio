@@ -81,6 +81,8 @@ export const GoogleFont = ({ onValueChange }) => {
 
   useEffect(() => {
     const fetchFonts = async () => {
+      console.log("Fetching Fonts");
+
       try {
         const apiKey = import.meta.env.VITE_GOOGLE_FONT_API_KEY;
         const response = await fetch(

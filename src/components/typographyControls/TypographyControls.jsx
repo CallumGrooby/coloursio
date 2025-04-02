@@ -60,7 +60,7 @@ export const Input = ({ label, value, onValueChange }) => {
         type="text"
         value={inputValue}
         onChange={handleChange}
-        className="rounded-md border border-[#C0C0C0] shadow-sm w-full px-3 py-1 bg-[#E7E7E7] text-[#969696]"
+        className="w-full min-w-36 p-2 border border-stroke rounded-lg shadow-md bg-white text-text cursor-text focus:outline-none focus:ring-2 focus:ring-[#9da5ae]"
       />
     </label>
   );

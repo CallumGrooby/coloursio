@@ -29,7 +29,7 @@ export const StyleBar = () => {
   };
 
   return (
-    <div className="w-[240px] h-full bg-[#D9D9D9] overflow-visible">
+    <div className="w-96 h-full bg-background overflow-visible">
       <TypographyControls
         heading={"headings"}
         onValueChange={(key, value) => {

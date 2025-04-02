@@ -10,7 +10,14 @@ export default {
     "text-sm",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        text: "#6C6E6F",
+        background: "#F1F5F9",
+        accent: "#F59E0B",
+        stroke: "#CBD5E1",
+      },
+    },
   },
   plugins: [],
 };
