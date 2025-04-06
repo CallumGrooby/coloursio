@@ -8,10 +8,16 @@ export const FooterSection = ({
     <footer
       style={{ color: colorStyle.text }}
       className={`${
-        currentView ? "w-full py-4 max-w-[1440px]" : "max w-[360px] px-2 py-4"
+        currentView
+          ? "w-full py-4 max-w-[1440px]"
+          : "max w-[360px] px-2 py-4 flex-row"
       } flex flex-col justify-center gap-6 relative min-h-[800px]`}
     >
-      <div className="w-full flex flex-row gap-4">
+      <div
+        className={`w-full flex gap-4 ${
+          currentView ? "flex-row" : " flex-col"
+        }`}
+      >
         <div
           style={{
             ...modifiedBodyStyle,
@@ -30,27 +36,32 @@ export const FooterSection = ({
             backgroundColor: colorStyle.secondary,
           }}
         >
-          <span className="flex flex-col gap-2 justify-end">
-            <span className="inline-flex gap-2">
+          <span className="flex flex-col gap-2 justify-end w-full">
+            <span className="inline-flex gap-2 flex-wrap">
               <button>Services</button>
               <button>Pricing</button>
               <button>Projects</button>
-            </span>
-            <span className="inline-flex gap-2">
               <button>About</button>
               <button>Contact</button>
             </span>
-            <p>© 2025 Colours.io. All rights reserved.</p>
-          </span>
-          <span className="flex flex-row gap-2 justify-end items-end">
-            <button>Privacy</button>
-            <button>Terms</button>
+
+            <span
+              className={`flex flex-wrap gap-2 ${
+                currentView ? "flex-row-reverse justify-between" : "flex-col"
+              }`}
+            >
+              <span className="inline-flex gap-2">
+                <button>Privacy</button>
+                <button>Terms</button>
+              </span>
+              <p>© 2025 Colours.io. All rights reserved.</p>
+            </span>
           </span>
         </div>
       </div>
 
       <div
-        className="grow h-full min-h-28 flex flex-row justify-between gap-4"
+        className="h-full min-h-28 gap-4 grid grid-cols-2"
         style={{
           ...modifiedBodyStyle,
           color: colorStyle.text,
@@ -58,25 +69,25 @@ export const FooterSection = ({
       >
         <button
           style={{ backgroundColor: colorStyle.secondary }}
-          className="grow rounded-2xl"
+          className="grow rounded-2xl aspect-square"
         >
           Twitter
         </button>
         <button
           style={{ backgroundColor: colorStyle.secondary }}
-          className="grow rounded-2xl"
+          className="grow rounded-2xl aspect-square"
         >
           Linked In
         </button>
         <button
           style={{ backgroundColor: colorStyle.secondary }}
-          className="grow rounded-2xl"
+          className="grow rounded-2xl aspect-square"
         >
           Github
         </button>
         <button
           style={{ backgroundColor: colorStyle.secondary }}
-          className="grow rounded-2xl"
+          className="grow rounded-2xl aspect-square"
         >
           Colours.io
         </button>

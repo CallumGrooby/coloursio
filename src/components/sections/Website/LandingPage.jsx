@@ -137,7 +137,7 @@ const FooterActionSection = ({
     <section
       className={`${
         currentView ? "w-full py-4" : "max w-[360px] px-2 py-4"
-      } flex flex-col justify-center gap-6 relative min-h-[460px] mt-8 mb-4`}
+      } flex flex-col justify-center gap-6 relative min-h-[460px] mt-8 mb-4 text-center`}
       style={{
         backgroundColor: colorStyle.primary,
         color: colorStyle.primary,
