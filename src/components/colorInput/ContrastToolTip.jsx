@@ -10,7 +10,7 @@ export const ContrastToolTip = (props) => {
       <div
         className={`${props.backgroundColor} absolute z-50 top-1/2 left-full transform  -translate-y-1/2 ml-2 rounded-md hidden group-hover:inline-block `}
       >
-        <span className="absolute top-1/2 right-full transform rounded-sm  -translate-y-1/2 translate-x-1/2 -z-10 rotate-45 size-3 bg-inherit inline-flex"></span>
+        <span className="absolute top-1/2 right-full transform rounded-xs  -translate-y-1/2 translate-x-1/2 -z-10 rotate-45 size-3 bg-inherit inline-flex"></span>
 
         <div className="text-white w-full h-full px-4 py-2 flex flex-col gap-1 justify-center items-center ">
           <h1 className="text-base whitespace-nowrap">

@@ -92,7 +92,7 @@ const ColorPalette = (props) => {
                     ${
                       isOpen
                         ? "border-blue-500 bg-blue-50 shadow-md"
-                        : "border-gray-300 hover:border-gray-400 hover:shadow-sm"
+                        : "border-gray-300 hover:border-gray-400 hover:shadow-xs"
                     }
                   `}
                   aria-label={`Select ${key} color`}
@@ -100,7 +100,7 @@ const ColorPalette = (props) => {
                   {/* Color Circle */}
                   <div
                     style={{ backgroundColor: colors[key] || "#ffffff" }}
-                    className="w-8 h-8 rounded-full border-2 border-white shadow-sm group-hover:scale-105 transition-transform"
+                    className="w-8 h-8 rounded-full border-2 border-white shadow-xs group-hover:scale-105 transition-transform"
                   />
 
                   {/* Hex Code */}

@@ -31,7 +31,7 @@ const ColorPalette = () => {
   };
 
   return (
-    <div className="basis-1/3 flex flex-col border border-gray-300 rounded-md shadow-sm overflow-hidden">
+    <div className="basis-1/3 flex flex-col border border-gray-300 rounded-md shadow-xs overflow-hidden">
       {Object.keys(mockColors).map((keyName, index) => (
         <ColorSection key={index} color={mockColors[keyName]} name={keyName} />
       ))}

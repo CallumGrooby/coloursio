@@ -39,7 +39,7 @@ export const Typography = () => {
 //           placeholder="Type something here..."
 //           value={props.textInput} // ...force the input's value to match the state variable...
 //           onChange={props.handleTextInput} // ... and update the state variable on any edits!
-//           className="rounded-md border border-[#C0C0C0] shadow-sm w-auto px-3 py-1 bg-[#E7E7E7] text-[#969696]"
+//           className="rounded-md border border-[#C0C0C0] shadow-xs w-auto px-3 py-1 bg-[#E7E7E7] text-[#969696]"
 //         />
 //       </label>
 //     </nav>

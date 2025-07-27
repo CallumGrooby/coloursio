@@ -48,7 +48,7 @@ export const HowItWorksSection = ({ colors }) => {
         {sections.map((section, index) => (
           <div
             key={index}
-            className={`p-4 border rounded-lg shadow-sm w-full min-h-[180px] bg-gray-300 `}
+            className={`p-4 border rounded-lg shadow-xs w-full min-h-[180px] bg-gray-300 `}
           >
             <ContentSection title={section.title} text={section.text} />
           </div>

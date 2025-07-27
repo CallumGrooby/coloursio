@@ -63,7 +63,7 @@ export const ColorInput = ({
           onChange={handleInputChange}
           style={{ backgroundColor: color }}
           className={`${isBackgroundLight ? "text-black" : "text-white"}
-        rounded-md border border-[#C0C0C0] shadow-sm w-full px-3 py-1 bg-[#E7E7E7] text-[#969696]`}
+        rounded-md border border-[#C0C0C0] shadow-xs w-full px-3 py-1 bg-[#E7E7E7] text-[#969696]`}
         />
         <ConstrastChecker backgroundColor={color} textColor={textColor} />
       </span>
