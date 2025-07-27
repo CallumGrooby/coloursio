@@ -38,10 +38,15 @@ export const BlogSection = ({ colors }) => {
         {sections.map((section, index) => (
           <div
             key={index}
-            className="flex flex-col gap-2 min-h-48 justify-end bg-gray-400 rounded-2xl box-border px-4 py-2"
+            className={`flex flex-col gap-2 min-h-48 justify-end border rounded-2xl box-border px-4 py-2 hover:bg-primary transition-all duration-500
+              ${index === 0 ? "bg-secondary " : "border-primary "}`}
             style={{ gridArea: section.gridArea }}
           >
-            <ContentSection title={section.title} text={section.text} />
+            <ContentSection
+              title={section.title}
+              text={section.text}
+              isFirst={index === 0}
+            />
           </div>
         ))}
       </div>
@@ -51,9 +56,9 @@ export const BlogSection = ({ colors }) => {
 
 const ContentSection = ({ title, text }) => {
   return (
-    <li>
-      <h1 className="text-xl font-bold mb-2">{title}</h1>
-      <p className="text-sm">{text}</p>
+    <li className="list-none">
+      <h1 className="text-xl text-text font-bold mb-2">{title}</h1>
+      <p className="text-sm text-text">{text}</p>
     </li>
   );
 };

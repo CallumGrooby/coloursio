@@ -19,10 +19,10 @@ const whyUsContent = [
 export const WhyUsSection = ({ colors }) => {
   return (
     <section
-      className={`w-full px-16 py-4 flex flex-col justify-center gap-6 relative min-h-[600px] bg-gray-200 text-black`}
+      className={`w-full px-16 py-4 flex flex-col justify-center gap-6 relative min-h-[600px] bg-secondary text-text`}
     >
       <header className={`max-w-[1440px] w-full mx-auto`}>
-        <h1 className="text-start text-2xl font-bold">
+        <h1 className="text-start text-primary text-2xl">
           Effortlessly Create Stunning <br /> Color Palettes & Typography
         </h1>
       </header>
@@ -35,11 +35,11 @@ export const WhyUsSection = ({ colors }) => {
         ))}
       </div>
 
-      <div className="absolute overflow-hidden top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex flex-row gap-24 items-center justify-center z-0">
+      {/* <div className="absolute overflow-hidden top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex flex-row gap-24 items-center justify-center z-0">
         {Array.from({ length: 16 }).map((_, index) => (
           <div key={index} className="block min-w-[2px] h-full bg-gray-400" />
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };
@@ -50,7 +50,7 @@ const ContentSection = ({ index, content }) => {
   return (
     <div
       className={`px-3 basis-1/3 rounded-xl z-40 min-h-48 py-4 ${
-        isFirstItem ? "bg-gray-400" : "bg-gray-300 border border-gray-400"
+        isFirstItem ? "bg-primary" : "bg-inherit border border-accent"
       }`}
     >
       <h2 className="text-lg font-semibold mb-2">{content.title}</h2>

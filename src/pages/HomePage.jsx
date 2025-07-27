@@ -12,11 +12,11 @@ import { HexColorPicker } from "react-colorful";
 
 export const HomePage = () => {
   const [colors, setColors] = useState({
-    text: "#333333",
-    background: "#ffffff",
-    primary: "#007bff",
-    secondary: "#6c757d",
-    accent: "#28a745",
+    text: "#000000",
+    background: "#FFFFFF",
+    primary: "#2F27CE",
+    secondary: "#DEDCFF",
+    accent: "#433BFF",
   });
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const HomePage = () => {
   }, [colors]);
 
   return (
-    <div>
+    <div className="bg-background">
       <HeroSection colors={colors} />
       <WhyUsSection colors={colors} />
       <HowItWorksSection colors={colors} />
@@ -58,7 +58,7 @@ const ColorPalette = (props) => {
   };
 
   return (
-    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 p-4 bg-white shadow-lg rounded-t-lg border-t border-gray-200">
+    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 p-4 bg-white shadow-lg rounded-t-lg border-t border-gray-200 z-50">
       <div className="flex flex-row gap-4 items-center">
         {Object.entries(colors).map(([key, value]) => {
           const isOpen = openSection === key;

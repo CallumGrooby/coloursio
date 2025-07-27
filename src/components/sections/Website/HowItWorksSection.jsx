@@ -37,8 +37,9 @@ export const HowItWorksSection = ({ colors }) => {
       className={`container mx-auto  flex flex-col justify-center relative`}
     >
       <header className={`mt-20 mb-12`}>
-        <h1 className="text-xl font-bold text-gray-900">
-          Master your design with <span className="font-bold">Colours.io</span>
+        <h1 className="text-4xl text-text">
+          Master your design with{" "}
+          <span className="font-bold italic text-primary ">Colours.io</span>
         </h1>
       </header>
 
@@ -48,7 +49,7 @@ export const HowItWorksSection = ({ colors }) => {
         {sections.map((section, index) => (
           <div
             key={index}
-            className={`p-4 border rounded-lg shadow-xs w-full min-h-[180px] bg-gray-300 `}
+            className={`p-4 border rounded-lg shadow-xs w-full min-h-[180px] bg-secondary `}
           >
             <ContentSection title={section.title} text={section.text} />
           </div>
@@ -61,8 +62,8 @@ export const HowItWorksSection = ({ colors }) => {
 const ContentSection = ({ title, text }) => {
   return (
     <>
-      <h1 className="font-bold mb-2 text-gray-800">{title}</h1>
-      <p className="text-sm text-gray-700">{text}</p>
+      <h1 className="font-bold text-xl mb-2 text-text">{title}</h1>
+      <p className="text-base text-text">{text}</p>
     </>
   );
 };

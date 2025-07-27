@@ -2,38 +2,30 @@ import React, { useEffect, useState } from "react";
 
 export const ContrastSection = ({ colors }) => {
   return (
-    <section className="w-full py-12 px-4 max-w-[1440px] mx-auto">
+    <section className="w-full py-12 px-4 container mx-auto">
       <header className="mb-12 text-center">
-        <h1 className="text-2xl font-bold mb-2 text-gray-800">
-          <span className="text-gray-700 font-bold">Accessible</span> Designs,
+        <h1 className="text-2xl mb-2 text-text">
+          <span className="text-primary font-bold">Accessible</span> Designs,
           Beautiful Results
         </h1>
-        <h2 className="italic text-gray-600">
+        <h2 className="italic text-accent">
           Make sure your color palette looks great and works for everyone
         </h2>
       </header>
 
       <div className="flex flex-col lg:flex-row gap-6">
-        <ColorPalette />
+        <ColorPaletteDisplay colors={colors} />
         <WCAGSection />
       </div>
     </section>
   );
 };
 
-const ColorPalette = () => {
-  const mockColors = {
-    primary: "#4A90E2",
-    secondary: "#7ED321",
-    accent: "#F5A623",
-    text: "#333333",
-    background: "#F0F0F0",
-  };
-
+const ColorPaletteDisplay = ({ colors }) => {
   return (
-    <div className="basis-1/3 flex flex-col border border-gray-300 rounded-md shadow-xs overflow-hidden">
-      {Object.keys(mockColors).map((keyName, index) => (
-        <ColorSection key={index} color={mockColors[keyName]} name={keyName} />
+    <div className="basis-1/3 shadow-xs grid grid-cols-1 rounded-2xl overflow-hidden">
+      {Object.keys(colors).map((keyName, index) => (
+        <ColorSection key={index} color={colors[keyName]} name={keyName} />
       ))}
     </div>
   );
@@ -94,12 +86,12 @@ const WCAGSection = () => {
       {sections.map((section, index) => (
         <div
           key={index}
-          className="border border-gray-300 rounded-2xl px-4 py-4 shadow-md flex flex-col gap-1 bg-gray-100"
+          className="border border-secondary rounded-2xl px-4 py-4 shadow-md flex flex-col gap-1 bg-gray-100"
         >
-          <h1 className="text-lg font-semibold text-gray-800">
+          <h1 className="text-lg font-semibold text-primary">
             {section.title}
           </h1>
-          <p className="text-sm text-gray-700">{section.text}</p>
+          <p className="text-sm text-text">{section.text}</p>
         </div>
       ))}
     </div>
