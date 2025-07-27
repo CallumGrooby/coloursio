@@ -55,7 +55,6 @@ const Website = (props) => {
       } mx-auto`}
       style={{ backgroundColor: colorStyle.background }}
     >
-      {/* Hero Section */}
       <HeroSection
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
@@ -63,7 +62,6 @@ const Website = (props) => {
         currentView={props.currentView}
       />
 
-      {/* Why Us Section */}
       <WhyUsSection
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
@@ -71,7 +69,6 @@ const Website = (props) => {
         currentView={props.currentView}
       />
 
-      {/* How It Works Section */}
       <HowItWorksSection
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
@@ -88,7 +85,6 @@ const Website = (props) => {
 
       {/* -------------------------------------------------------------  NEED TO ADD COLOR PALLET SECTION */}
 
-      {/* Pricing Section */}
       <PricingSection
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
@@ -102,21 +98,12 @@ const Website = (props) => {
         colorStyle={colorStyle}
         currentView={props.currentView}
       />
-
-      {/* Testimonials Section */}
-      {/* <TestimonialsSection
-        modifiedHeaderStyle={modifiedHeaderStyle}
-        modifiedBodyStyle={modifiedBodyStyle}
-        colorStyle={colorStyle}
-        currentView={props.currentView}
-      /> */}
       <FooterActionSection
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}
         colorStyle={colorStyle}
         currentView={props.currentView}
       />
-      {/* Footer Section */}
       <FooterSection
         modifiedHeaderStyle={modifiedHeaderStyle}
         modifiedBodyStyle={modifiedBodyStyle}

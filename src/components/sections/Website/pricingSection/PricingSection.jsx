@@ -68,8 +68,8 @@ export const PricingSection = ({
         </div>
 
         <section
-          className={`flex flex-row flex-wrap gap-2 w-full box-content ${
-            currentView ? "flex-row" : "flex-col"
+          className={`flex flex-row flex-wrap gap-2 w-full ${
+            currentView ? "flex-row" : "flex-col px-2"
           }`}
         >
           {pricingPlans.map((title, index) => {
