@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 export const Navbar = () => {
   return (
     <>
-      <nav className="flex flex-row justify-between bg-background px-16 py-2 items-center ">
+      {/* <nav className="flex flex-row justify-between bg-background px-16 py-2 items-center ">
         <div>
           <h1 className="text-gray-700 text-2xl font-bold">
             Colors.<span>io</span>
@@ -32,7 +32,28 @@ export const Navbar = () => {
             Export
           </button>
         </div>
+      </nav> */}
+
+      <nav className="">
+        <div>
+          <h1 className="text-gray-700 text-2xl font-bold">
+            Colors.<span>io</span>
+          </h1>
+        </div>
+
+        <ul className="">
+          <li>
+            <Link to="/docs">Color Contrast</Link>
+          </li>
+          <li>
+            <Link to="/docs">Play Ground</Link>
+          </li>
+          <li>
+            <Link to="/docs">Docs</Link>
+          </li>
+        </ul>
       </nav>
+
       <Outlet />
     </>
   );

@@ -1,18 +1,15 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { Navbar } from "./components/pages/Navbar.jsx";
-import ErrorPage from "./components/pages/ErrorPage.jsx";
-import { HomePage } from "./components/pages/HomePage.jsx";
-import { DocsPage } from "./components/pages/DocsPage.jsx";
-import { Typography } from "./components/sections/typography/Typography.jsx";
-import { LandingPage } from "./components/sections/Website/LandingPage.jsx";
+import { Navbar } from "./pages/Navbar.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import { HomePage } from "./pages/HomePage.jsx";
+import { DocsPage } from "./pages/DocsPage.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,20 +19,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
-        children: [
-          {
-            index: true, // This makes it the default route
-            element: <Typography />,
-          },
-          {
-            path: "typography",
-            element: <Typography />,
-          },
-          {
-            path: "landingpage",
-            element: <LandingPage />,
-          },
-        ],
       },
       {
         path: "/docs",

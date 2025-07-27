@@ -7,40 +7,7 @@
   line-height: normal;
   font-weight: 400;
   color-scheme: light dark;
-}
 
-.input-field {
-  @apply flex flex-row gap-3 items-center;
-}
-
-.input-field > h1 {
-  @apply text-sm text-[#969696] min-w-[72px];
-}
-
-.input-field > input {
-  @apply rounded-md border border-[#C0C0C0] shadow-sm w-full px-3 py-1;
-}
-
-.text-unit-button {
-  @apply text-base text-[#969696] bg-[#f2f2f2] shadow-md w-fit max-w-36 px-4 py-1 rounded-md uppercase mb-4 hover:bg-[#d3d3d3];
-}
-
-.text-unit-button {
-  @apply bg-[#d3d3d3];
-}
-
-.text-unit-button.active {
-  @apply bg-[#b9b9b9];
-}
-
-.website-button {
-  @apply px-4 py-3 rounded-xl;
-}
-
-.nav-button {
-  @apply px-4 text-base opacity-animation;
-}
-
-.opacity-animation {
-  @apply text-text transition-opacity duration-200 ease-out opacity-100 hover:opacity-50;
+  background-color: white;
+  color: black;
 }

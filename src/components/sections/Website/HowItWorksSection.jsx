@@ -31,46 +31,26 @@ const sections = [
   },
 ];
 
-export const HowItWorksSection = ({
-  modifiedHeaderStyle,
-  modifiedBodyStyle,
-  colorStyle,
-  currentView,
-}) => {
+export const HowItWorksSection = ({ colors }) => {
   return (
     <section
-      className={`${
-        currentView ? "w-full py-4 max-w-[1440px]" : "max w-[360px] px-2 py-4"
-      } flex flex-col justify-center relative`}
+      className={`container mx-auto  flex flex-col justify-center relative`}
     >
-      <header className={` ${currentView ? "mt-20 mb-12" : "mt-8 mb-4"}`}>
-        <h1 style={{ ...modifiedHeaderStyle, color: colorStyle.text }}>
+      <header className={`mt-20 mb-12`}>
+        <h1 className="text-xl font-bold text-gray-900">
           Master your design with <span className="font-bold">Colours.io</span>
         </h1>
       </header>
+
       <div
-        className={`grid grid-cols-1 gap-4 ${
-          currentView ? "!grid-cols-9" : "!grid-cols-1"
-        }`}
+        className={`grid gap-4 grid-flow-row row-start-auto lg:grid-cols-3 `}
       >
         {sections.map((section, index) => (
           <div
             key={index}
-            className={`${
-              currentView && section.gridClass
-            } p-4 border rounded-lg shadow-sm w-full min-h-[180px]`}
-            style={{
-              color: colorStyle.text,
-              backgroundColor: colorStyle.primary,
-            }}
+            className={`p-4 border rounded-lg shadow-sm w-full min-h-[180px] bg-gray-300 `}
           >
-            <ContentSection
-              title={section.title}
-              text={section.text}
-              modifiedBodyStyle={modifiedBodyStyle}
-              modifiedHeaderStyle={modifiedHeaderStyle}
-              colorStyle={colorStyle}
-            />
+            <ContentSection title={section.title} text={section.text} />
           </div>
         ))}
       </div>
@@ -78,29 +58,11 @@ export const HowItWorksSection = ({
   );
 };
 
-const ContentSection = (props) => {
-  const { modifiedHeaderStyle, modifiedBodyStyle, colorStyle, title, text } =
-    props;
-
+const ContentSection = ({ title, text }) => {
   return (
     <>
-      <h1
-        className="font-bold mb-2"
-        style={{
-          ...modifiedHeaderStyle,
-        }}
-      >
-        {title}
-      </h1>
-      <p
-        className="mb-1"
-        style={{
-          ...modifiedBodyStyle,
-          color: colorStyle.text,
-        }}
-      >
-        {text}
-      </p>
+      <h1 className="font-bold mb-2 text-gray-800">{title}</h1>
+      <p className="text-sm text-gray-700">{text}</p>
     </>
   );
 };
