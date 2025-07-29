@@ -1,3 +1,5 @@
+import DynamicText from "../../DynamicText";
+
 const whyUsContent = [
   {
     icon: "",
@@ -31,7 +33,12 @@ export const WhyUsSection = ({ colors }) => {
         className={`grid gap-4 grid-flow-row row-start-auto lg:grid-cols-3 max-w-[1440px] mx-auto`}
       >
         {whyUsContent.map((content, index) => (
-          <ContentSection key={index} index={index} content={content} />
+          <ContentSection
+            key={index}
+            colors={colors}
+            index={index}
+            content={content}
+          />
         ))}
       </div>
 
@@ -44,8 +51,21 @@ export const WhyUsSection = ({ colors }) => {
   );
 };
 
-const ContentSection = ({ index, content }) => {
+const ContentSection = ({ colors, index, content }) => {
   const isFirstItem = index === 0;
+
+  if (isFirstItem) {
+    return (
+      <DynamicText backgroundColor={colors.primary}>
+        <div
+          className={`px-3 basis-1/3 rounded-xl z-40 min-h-48 py-4 bg-primary`}
+        >
+          <h2 className="text-lg font-semibold mb-2">{content.title}</h2>
+          <p className="text-sm">{content.text}</p>
+        </div>
+      </DynamicText>
+    );
+  }
 
   return (
     <div

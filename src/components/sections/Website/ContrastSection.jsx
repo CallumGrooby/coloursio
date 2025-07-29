@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import DynamicText from "../../DynamicText";
 
 export const ContrastSection = ({ colors }) => {
   return (
@@ -32,33 +33,17 @@ const ColorPaletteDisplay = ({ colors }) => {
 };
 
 const ColorSection = ({ color, name }) => {
-  const [fontColor, setFontColor] = useState("#000");
-
-  useEffect(() => {
-    const isDark = getTextColor(color);
-    setFontColor(isDark ? "#000" : "#fff");
-  }, [color]);
-
   return (
-    <li
-      className="w-full min-h-[60px] flex items-center justify-between px-4"
-      style={{ backgroundColor: color, color: fontColor }}
-    >
-      <span className="capitalize">{name}</span>
-      <span>{color}</span>
-    </li>
+    <DynamicText backgroundColor={color}>
+      <li
+        className="w-full min-h-[60px] flex items-center justify-between px-4 h-full "
+        style={{ backgroundColor: color }}
+      >
+        <span className="capitalize">{name}</span>
+        <span>{color}</span>
+      </li>
+    </DynamicText>
   );
-};
-
-// Dummy version of getTextColor utility for demo purposes
-const getTextColor = (bgColor) => {
-  // Simple luminance check for contrast (can be replaced with real logic)
-  if (!bgColor) return true;
-  const r = parseInt(bgColor.substr(1, 2), 16);
-  const g = parseInt(bgColor.substr(3, 2), 16);
-  const b = parseInt(bgColor.substr(5, 2), 16);
-  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance > 0.5; // true = dark text
 };
 
 const WCAGSection = () => {

@@ -1,3 +1,5 @@
+import DynamicText from "../../DynamicText";
+
 export const HeroSection = ({ colors }) => {
   return (
     <section
@@ -28,9 +30,12 @@ export const HeroSection = ({ colors }) => {
         <button className="website-button bg-primary text-white px-4 py-2 rounded-md">
           How It Works
         </button>
-        <button className="website-button bg-secondary text-white px-4 py-2 rounded-md">
-          Get Started
-        </button>
+
+        <DynamicText backgroundColor={colors.secondary}>
+          <button className="website-button bg-secondary px-4 py-2 rounded-md">
+            Get Started
+          </button>
+        </DynamicText>
       </div>
     </section>
   );
