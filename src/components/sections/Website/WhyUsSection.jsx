@@ -18,13 +18,16 @@ const whyUsContent = [
   },
 ];
 
-export const WhyUsSection = ({ colors }) => {
+export const WhyUsSection = ({ colors, headerFont, bodyFont }) => {
   return (
     <section
       className={`w-full px-16 py-4 flex flex-col justify-center gap-6 relative min-h-[600px] bg-secondary text-text`}
     >
       <header className={`max-w-[1440px] w-full mx-auto`}>
-        <h1 className="text-start text-primary text-2xl">
+        <h1
+          className="text-start text-primary text-2xl"
+          style={{ fontFamily: headerFont || "inherit" }}
+        >
           Effortlessly Create Stunning <br /> Color Palettes & Typography
         </h1>
       </header>
@@ -38,6 +41,8 @@ export const WhyUsSection = ({ colors }) => {
             colors={colors}
             index={index}
             content={content}
+            headerFont={headerFont}
+            bodyFont={bodyFont}
           />
         ))}
       </div>
@@ -51,7 +56,7 @@ export const WhyUsSection = ({ colors }) => {
   );
 };
 
-const ContentSection = ({ colors, index, content }) => {
+const ContentSection = ({ colors, index, content, headerFont, bodyFont }) => {
   const isFirstItem = index === 0;
 
   if (isFirstItem) {
@@ -60,8 +65,15 @@ const ContentSection = ({ colors, index, content }) => {
         <div
           className={`px-3 basis-1/3 rounded-xl z-40 min-h-48 py-4 bg-primary`}
         >
-          <h2 className="text-lg font-semibold mb-2">{content.title}</h2>
-          <p className="text-sm">{content.text}</p>
+          <h2
+            className="text-lg font-semibold mb-2"
+            style={{ fontFamily: headerFont || "inherit" }}
+          >
+            {content.title}
+          </h2>
+          <p className="text-sm" style={{ fontFamily: bodyFont || "inherit" }}>
+            {content.text}
+          </p>
         </div>
       </DynamicText>
     );
@@ -73,8 +85,15 @@ const ContentSection = ({ colors, index, content }) => {
         isFirstItem ? "bg-primary" : "bg-inherit border border-accent"
       }`}
     >
-      <h2 className="text-lg font-semibold mb-2">{content.title}</h2>
-      <p className="text-sm">{content.text}</p>
+      <h2
+        className="text-lg font-semibold mb-2"
+        style={{ fontFamily: headerFont || "inherit" }}
+      >
+        {content.title}
+      </h2>
+      <p className="text-sm" style={{ fontFamily: bodyFont || "inherit" }}>
+        {content.text}
+      </p>
     </div>
   );
 };

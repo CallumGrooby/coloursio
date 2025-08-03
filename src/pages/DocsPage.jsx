@@ -1,20 +1,30 @@
-import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
 export const DocsPage = () => {
-  return <div>
-    
-  <nav>
-    <ul>
-      <li>
-        <Link to="/docs/about-us">Color Contrast</Link>
-        <Link to="/docs/how-it-works">Color Contrast</Link>
-        <Link to="/docs/examples">Color Contrast</Link>
-      </li>
-    </ul>
-  </nav>
+  return (
+    <div className="flex h-full container mx-auto">
+      {/* Sidebar */}
+      <nav className="w-64 border-r border-gray-300 p-4">
+        <ul className="space-y-2">
+          <li>
+            <h1 className="text-lg font-semibold">Docs</h1>
+          </li>
+          <li>
+            <Link to="/docs/about-us">About Us</Link>
+          </li>
+          <li>
+            <Link to="/docs/how-it-works">How It Works</Link>
+          </li>
+          <li>
+            <Link to="/docs/examples">Examples</Link>
+          </li>
+        </ul>
+      </nav>
 
-
-<Outlet/>
-  </div>;
+      {/* Main Content */}
+      <div className="flex-1 overflow-auto p-6">
+        <Outlet />
+      </div>
+    </div>
+  );
 };

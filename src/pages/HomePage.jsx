@@ -10,7 +10,8 @@ import { FooterActionSection } from "../components/sections/Website/FooterAction
 import { FooterSection } from "../components/sections/Website/FooterSection";
 import { HexColorPicker } from "react-colorful";
 import { CheckContrast } from "../utils/ContrastApi";
-import ColorPalette from "../components/ColorPallete";
+import ColorPalette from "../components/OptionsBar";
+import OptionsBar from "../components/OptionsBar";
 
 const getInitialColors = () => {
   const params = new URLSearchParams(window.location.search);
@@ -25,6 +26,8 @@ const getInitialColors = () => {
 
 export const HomePage = () => {
   const [colors, setColors] = useState(getInitialColors); // initialize from URL
+  const [headerFont, setHeaderFont] = useState(null);
+  const [bodyFont, setBodyFont] = useState(null); // Fixed typo from setBodyFront
 
   // Apply colors to CSS variables
   useEffect(() => {
@@ -33,6 +36,16 @@ export const HomePage = () => {
     });
   }, [colors]);
 
+  // Apply fonts to CSS variables
+  useEffect(() => {
+    if (headerFont) {
+      document.documentElement.style.setProperty("--font-header", headerFont);
+    }
+    if (bodyFont) {
+      document.documentElement.style.setProperty("--font-body", bodyFont);
+    }
+  }, [headerFont, bodyFont]);
+
   // Update URL when colors change
   useEffect(() => {
     const params = new URLSearchParams();
@@ -40,22 +53,64 @@ export const HomePage = () => {
       params.set(key, value.replace("#", ""));
     });
 
+    // Optionally add fonts to URL as well
+    if (headerFont) params.set("headerFont", headerFont);
+    if (bodyFont) params.set("bodyFont", bodyFont);
+
     const newUrl = `${window.location.pathname}?${params.toString()}`;
     window.history.replaceState({}, "", newUrl);
-  }, [colors]);
+  }, [colors, headerFont, bodyFont]);
 
   return (
     <div className="bg-background">
-      <HeroSection colors={colors} />
-      <WhyUsSection colors={colors} />
-      <HowItWorksSection colors={colors} />
-      <ContrastSection colors={colors} />
-      <PricingSection colors={colors} />
-      <BlogSection colors={colors} />
-      <FooterActionSection colors={colors} />
-      <FooterSection colors={colors} />
-      <ColorPalette colors={colors} setColors={setColors} />
+      <HeroSection
+        colors={colors}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
+      />
+      <WhyUsSection
+        colors={colors}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
+      />
+      <HowItWorksSection
+        colors={colors}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
+      />
+      <ContrastSection
+        colors={colors}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
+      />
+      <PricingSection
+        colors={colors}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
+      />
+      <BlogSection
+        colors={colors}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
+      />
+      <FooterActionSection
+        colors={colors}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
+      />
+      <FooterSection
+        colors={colors}
+        headerFont={headerFont}
+        bodyFont={bodyFont}
+      />
+      <OptionsBar
+        colors={colors}
+        setColors={setColors}
+        headerFont={headerFont}
+        setHeaderFont={setHeaderFont}
+        bodyFont={bodyFont}
+        setBodyFont={setBodyFont}
+      />
     </div>
   );
 };
-

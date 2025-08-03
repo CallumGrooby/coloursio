@@ -2,12 +2,18 @@ import { PricingCard } from "./reusableComponents/pricingCard/pricingCard";
 
 const pricingPlans = ["Basic", "Premium", "Pro"];
 
-export const PricingSection = ({ colors }) => {
+export const PricingSection = ({ colors, headerFont, bodyFont }) => {
   return (
-    <section className="container mx-auto w-full flex flex-col items-center justify-center gap-6 mb-8">
+    <section
+      className="container mx-auto w-full flex flex-col items-center justify-center gap-6 mb-8"
+      style={{ fontFamily: bodyFont || "inherit" }}
+    >
       <div className="flex flex-col gap-3 justify-center items-center max-w-[972px] w-full">
         <header>
-          <h1 className="text-2xl text-center mb-4 text-text">
+          <h1
+            className="text-2xl text-center mb-4 text-text"
+            style={{ fontFamily: headerFont || "inherit" }}
+          >
             Why Choose{" "}
             <span className="text-primary font-bold">Colours.io</span>
           </h1>
@@ -17,7 +23,10 @@ export const PricingSection = ({ colors }) => {
           </p>
         </header>
 
-        <div className="flex flex-row flex-wrap gap-12 justify-center">
+        <div
+          className="flex flex-row flex-wrap gap-12 justify-center"
+          style={{ fontFamily: headerFont || "inherit" }}
+        >
           <div className="flex flex-col gap-1 items-center">
             <h1 className="text-3xl italic font-semibold text-primary">95%</h1>
             <h2 className="text-center text-sm text-accent">
@@ -38,7 +47,10 @@ export const PricingSection = ({ colors }) => {
           </div>
         </div>
 
-        <section className="flex flex-wrap justify-center gap-4 w-full mt-8">
+        <section
+          className="flex flex-wrap justify-center gap-4 w-full mt-8"
+          style={{ fontFamily: bodyFont || "inherit" }}
+        >
           {pricingPlans.map((title, index) => (
             <PricingCard key={index} title={title} isFirst={index === 0} />
           ))}

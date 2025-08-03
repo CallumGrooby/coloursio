@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { CheckContrast } from "../utils/ContrastApi";
+// import { FontSelectors } from "./FontSelectors";
+import { FontDisplay } from "./fontSelection/FontDisplay";
 
 // Helper function - returns a color based on the pass level
 const getWCAGColor = (passLevel) => {
@@ -83,11 +85,11 @@ const ColorButton = ({
       onClick={onClick}
       className={`
         group relative px-6 py-4 rounded-lg border transition-all duration-200
-        flex flex-row items-center gap-2 min-w-[80px]
+        flex flex-row items-center gap-3 min-w-[200px] h-[64px]
         ${
           isOpen
             ? "border-blue-500 bg-blue-50 shadow-md"
-            : "border-gray-300 hover:border-gray-400 hover:shadow-xs"
+            : "border-gray-300 hover:border-gray-400 hover:shadow-sm"
         }
       `}
       aria-label={`Select ${colorKey} color`}
@@ -95,17 +97,19 @@ const ColorButton = ({
       {/* Color Circle */}
       <div
         style={{ backgroundColor: color || "#ffffff" }}
-        className="w-8 h-8 rounded-full border-2 border-white shadow-xs group-hover:scale-105 transition-transform"
+        className="w-8 h-8 rounded-full border-2 border-white shadow-sm group-hover:scale-105 transition-transform flex-shrink-0"
       />
 
       {/* Hex Code */}
-      <span className="text-base font-mono text-gray-600 group-hover:text-gray-800">
+      <span className="text-base font-mono text-gray-600 group-hover:text-gray-800 flex-grow text-left">
         {color || "#ffffff"}
       </span>
 
       {/* WCAG Indicator (only for non-text colors) */}
       {showWCAGIndicator && (
-        <WCAGIndicator passLevel={wcagData?.passLevel} wcagData={wcagData} />
+        <div className="flex-shrink-0">
+          <WCAGIndicator passLevel={wcagData?.passLevel} wcagData={wcagData} />
+        </div>
       )}
     </button>
   </div>
@@ -140,7 +144,14 @@ const ColorItem = ({
 );
 
 // Main Color Palette Component
-const ColorPalette = ({ colors, setColors }) => {
+const OptionsBar = ({
+  colors,
+  setColors,
+  headerFont,
+  setHeaderFont,
+  bodyFont,
+  setBodyFont, // Fixed typo from setBodyFront
+}) => {
   const prevColorsRef = useRef(colors);
   const [openSection, setOpenSection] = useState(null);
   const [WCAGLevel, setWCAGLevel] = useState({
@@ -213,9 +224,16 @@ const ColorPalette = ({ colors, setColors }) => {
             wcagData={WCAGLevel[key]}
           />
         ))}
+
+        <FontDisplay
+          headerFont={headerFont}
+          setHeaderFont={setHeaderFont}
+          bodyFont={bodyFont}
+          setBodyFont={setBodyFont}
+        />
       </div>
     </div>
   );
 };
 
-export default ColorPalette;
+export default OptionsBar;

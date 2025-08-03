@@ -27,3 +27,19 @@
   background-color: white;
   color: black;
 }
+
+.header {
+  @apply text-5xl font-semibold text-gray-800;
+}
+
+.sub-header {
+  @apply text-2xl font-semibold text-gray-800;
+}
+
+.content {
+  @apply text-lg text-gray-800;
+}
+
+.docs-container {
+  @apply flex flex-col gap-2;
+}

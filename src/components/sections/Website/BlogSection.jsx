@@ -31,9 +31,12 @@ const sections = [
   },
 ];
 
-export const BlogSection = ({ colors }) => {
+export const BlogSection = ({ colors, headerFont, bodyFont }) => {
   return (
-    <section className="w-full py-4 px-4 max-w-[1440px] mx-auto flex flex-col gap-6 min-h-[800px]">
+    <section
+      className="w-full py-4 px-4 max-w-[1440px] mx-auto flex flex-col gap-6 min-h-[800px]"
+      style={{ fontFamily: bodyFont || "inherit" }}
+    >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-9 grid-rows-7 gap-4 w-full h-full">
         {sections.map((section, index) => (
           <div

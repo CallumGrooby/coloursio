@@ -31,13 +31,16 @@ const sections = [
   },
 ];
 
-export const HowItWorksSection = ({ colors }) => {
+export const HowItWorksSection = ({ colors, headerFont, bodyFont }) => {
   return (
     <section
       className={`container mx-auto  flex flex-col justify-center relative`}
     >
       <header className={`mt-20 mb-12`}>
-        <h1 className="text-4xl text-text">
+        <h1
+          className="text-4xl text-text"
+          style={{ fontFamily: headerFont || "inherit" }}
+        >
           Master your design with{" "}
           <span className="font-bold italic text-primary ">Colours.io</span>
         </h1>
@@ -50,6 +53,7 @@ export const HowItWorksSection = ({ colors }) => {
           <div
             key={index}
             className={`p-4 border rounded-lg shadow-xs w-full min-h-[180px] bg-secondary `}
+            style={{ fontFamily: bodyFont || "inherit" }}
           >
             <ContentSection title={section.title} text={section.text} />
           </div>

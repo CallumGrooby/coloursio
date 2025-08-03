@@ -1,6 +1,9 @@
-export const FooterSection = ({ colors }) => {
+export const FooterSection = ({ colors, headerFont, bodyFont }) => {
   return (
-    <footer className="w-full py-12 px-4 max-w-[1440px] mx-auto flex flex-col gap-6 text-text">
+    <footer
+      className="w-full py-12 px-4 max-w-[1440px] mx-auto flex flex-col gap-6 text-text mb-32"
+      style={{ fontFamily: bodyFont || "inherit" }}
+    >
       <div className="w-full flex flex-col lg:flex-row gap-4">
         <div className="basis-4/12 min-h-80 flex justify-center items-center rounded-2xl bg-secondary text-primary text-xl font-bold">
           COLOURS.IO
@@ -35,17 +38,17 @@ export const FooterSection = ({ colors }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 min-h-28 ">
-        <button className="bg-secondary border-primary text-text hover:text-primary border hover:border-primary hover:bg-background transition-all duration-700 text-2xl font-semibold rounded-2xl aspect-square">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 min-h-16">
+        <button className="bg-secondary border-primary text-text hover:text-primary border hover:border-primary hover:bg-background transition-all duration-700 text-lg text-start px-4 font-semibold rounded-2xl">
           Twitter
         </button>
-        <button className="bg-secondary border-primary text-text hover:text-primary border hover:border-primary hover:bg-background transition-all duration-700 text-2xl font-semibold rounded-2xl aspect-square">
+        <button className="bg-secondary border-primary text-text hover:text-primary border hover:border-primary hover:bg-background transition-all duration-700 text-lg text-start px-4 font-semibold rounded-2xl ">
           LinkedIn
         </button>
-        <button className="bg-secondary border-primary text-text hover:text-primary border hover:border-primary hover:bg-background transition-all duration-700 text-2xl font-semibold rounded-2xl aspect-square">
+        <button className="bg-secondary border-primary text-text hover:text-primary border hover:border-primary hover:bg-background transition-all duration-700 text-lg text-start px-4 font-semibold rounded-2xl ">
           GitHub
         </button>
-        <button className="bg-secondary border-primary text-text hover:text-primary border hover:border-primary hover:bg-background transition-all duration-700 text-2xl font-semibold rounded-2xl aspect-square">
+        <button className="bg-secondary border-primary text-text hover:text-primary border hover:border-primary hover:bg-background transition-all duration-700 text-lg text-start px-4 font-semibold rounded-2xl ">
           Colours.io
         </button>
       </div>

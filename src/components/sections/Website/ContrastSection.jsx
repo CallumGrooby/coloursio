@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DynamicText from "../../DynamicText";
 
-export const ContrastSection = ({ colors }) => {
+export const ContrastSection = ({ colors, headerFont, bodyFont }) => {
   return (
     <section className="w-full py-12 px-4 container mx-auto">
       <header className="mb-12 text-center">
@@ -15,16 +15,19 @@ export const ContrastSection = ({ colors }) => {
       </header>
 
       <div className="flex flex-col lg:flex-row gap-6">
-        <ColorPaletteDisplay colors={colors} />
-        <WCAGSection />
+        <ColorPaletteDisplay colors={colors} headerFont={headerFont} />
+        <WCAGSection headerFont={headerFont} bodyFont={bodyFont} />
       </div>
     </section>
   );
 };
 
-const ColorPaletteDisplay = ({ colors }) => {
+const ColorPaletteDisplay = ({ colors, headerFont }) => {
   return (
-    <div className="basis-1/3 shadow-xs grid grid-cols-1 rounded-2xl overflow-hidden">
+    <div
+      className="basis-1/3 shadow-xs grid grid-cols-1 rounded-2xl overflow-hidden"
+      style={{ fontFamily: headerFont || "inherit" }}
+    >
       {Object.keys(colors).map((keyName, index) => (
         <ColorSection key={index} color={colors[keyName]} name={keyName} />
       ))}
@@ -46,7 +49,7 @@ const ColorSection = ({ color, name }) => {
   );
 };
 
-const WCAGSection = () => {
+const WCAGSection = ({ bodyFont, headerFont }) => {
   const sections = [
     {
       title: "What is WCAG Compliance?",
@@ -71,12 +74,20 @@ const WCAGSection = () => {
       {sections.map((section, index) => (
         <div
           key={index}
-          className="border border-secondary rounded-2xl px-4 py-4 shadow-md flex flex-col gap-1 bg-gray-100"
+          className="border border-secondary rounded-2xl px-4 py-4 shadow-md flex flex-col gap-1 bg-background"
         >
-          <h1 className="text-lg font-semibold text-primary">
+          <h1
+            className="text-lg font-semibold text-primary"
+            style={{ fontFamily: headerFont || "inherit" }}
+          >
             {section.title}
           </h1>
-          <p className="text-sm text-text">{section.text}</p>
+          <p
+            className="text-sm text-text"
+            style={{ fontFamily: bodyFont || "inherit" }}
+          >
+            {section.text}
+          </p>
         </div>
       ))}
     </div>

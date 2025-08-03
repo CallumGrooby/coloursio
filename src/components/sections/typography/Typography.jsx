@@ -27,21 +27,3 @@ export const Typography = () => {
     </div>
   );
 };
-
-// const SectionControls = (props) => {
-//   return (
-//     <nav className="flex flex-row justify-between px-2 py-2 sticky top-0 bg-gray-400 w-full">
-//       <label className="flex flex-row gap-3 items-center">
-//         <span className="inline text-sm text-[#626262] min-w-[80px] w-fit capitalize">
-//           Enter new text:
-//         </span>
-//         <input
-//           placeholder="Type something here..."
-//           value={props.textInput} // ...force the input's value to match the state variable...
-//           onChange={props.handleTextInput} // ... and update the state variable on any edits!
-//           className="rounded-md border border-[#C0C0C0] shadow-xs w-auto px-3 py-1 bg-[#E7E7E7] text-[#969696]"
-//         />
-//       </label>
-//     </nav>
-//   );
-// };

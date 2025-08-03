@@ -9,8 +9,8 @@ import { Navbar } from "./pages/Navbar.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import { HomePage } from "./pages/HomePage.jsx";
 import { DocsPage } from "./pages/DocsPage.jsx";
-import {HowItWorks} from "./pages/DocsPages/HowItWorks.jsx";
-import {AboutUs} from "./pages/DocsPages/AboutUs.jsx";
+import { HowItWorks } from "./pages/DocsPages/HowItWorks.jsx";
+import { AboutUs } from "./pages/DocsPages/AboutUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,11 +25,11 @@ const router = createBrowserRouter([
       {
         path: "/docs",
         element: <DocsPage />,
-        children:[
-          {path: "/docs/how-it-works", element: <HowItWorks/>},
-          {path: "/docs/about-us", element: <AboutUs/>},
-          {path: "/docs/examples", element: <HowItWorks/>},
-        ]
+        children: [
+          { path: "/docs/how-it-works", element: <HowItWorks /> },
+          { path: "/docs/about-us", element: <AboutUs /> },
+          { path: "/docs/examples", element: <HowItWorks /> },
+        ],
       },
     ],
   },
