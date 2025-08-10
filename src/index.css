@@ -43,3 +43,36 @@
 .docs-container {
   @apply flex flex-col gap-2;
 }
+
+.mobile-options-icons {
+  @apply text-accent size-16 text-center bg-white rounded-full p-2 drop-shadow-lg;
+}
+
+/* Base picker container */
+.react-colorful {
+  width: 100% !important;
+  height: 200px !important;
+  border-radius: 0.75rem; /* 12px */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Saturation area (main square) */
+.react-colorful__saturation {
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+/* Hue and alpha sliders */
+.react-colorful__hue,
+.react-colorful__alpha {
+  height: 16px;
+  border-radius: 9999px; /* pill shape */
+}
+
+/* Round the thumb */
+.react-colorful__pointer {
+  width: 18px;
+  height: 18px;
+  border: 2px solid white;
+  border-radius: 9999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}

@@ -12,6 +12,7 @@ import { HexColorPicker } from "react-colorful";
 import { CheckContrast } from "../utils/ContrastApi";
 import ColorPalette from "../components/OptionsBar";
 import OptionsBar from "../components/OptionsBar";
+import { MobileOptionsBar } from "../components/OptionsBar/MobileOptionsBar";
 
 const getInitialColors = () => {
   const params = new URLSearchParams(window.location.search);
@@ -103,7 +104,17 @@ export const HomePage = () => {
         headerFont={headerFont}
         bodyFont={bodyFont}
       />
-      <OptionsBar
+      {/* <OptionsBar
+        colors={colors}
+        setColors={setColors}
+        headerFont={headerFont}
+        setHeaderFont={setHeaderFont}
+        bodyFont={bodyFont}
+        setBodyFont={setBodyFont}
+      /> */}
+
+      {/* Mobile Options Bar */}
+      <MobileOptionsBar
         colors={colors}
         setColors={setColors}
         headerFont={headerFont}
