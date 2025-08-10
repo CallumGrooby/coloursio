@@ -63,7 +63,7 @@ const ContentSection = ({ colors, index, content, headerFont, bodyFont }) => {
     return (
       <DynamicText backgroundColor={colors.primary}>
         <div
-          className={`px-3 basis-1/3 rounded-xl z-40 min-h-48 py-4 bg-primary`}
+          className={`px-3 basis-1/3 rounded-xl z-10 min-h-48 py-4 bg-primary`}
         >
           <h2
             className="text-lg font-semibold mb-2"
@@ -81,7 +81,7 @@ const ContentSection = ({ colors, index, content, headerFont, bodyFont }) => {
 
   return (
     <div
-      className={`px-3 basis-1/3 rounded-xl z-40 min-h-48 py-4 ${
+      className={`px-3 basis-1/3 rounded-xl z-10 min-h-48 py-4 ${
         isFirstItem ? "bg-primary" : "bg-inherit border border-accent"
       }`}
     >
