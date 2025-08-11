@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { HexColorPicker } from "react-colorful";
 import { ModalBase } from "./MobileOptionsBar";
+import { CheckContrast } from "../../utils/ContrastApi";
 
 const isValidHex = (val) => /^#?[0-9A-Fa-f]{6}$/.test(val);
 const normalizeHex = (val) => {
@@ -69,26 +70,82 @@ const ColorModal = ({ isOpen, onClose, colors, setColors }) => {
     return () => clearTimeout(debounceTimer.current);
   }, []);
 
+  const prevColorsRef = useRef({});
+  const [WCAGLevel, setWCAGLevel] = useState({
+    background: { passLevel: "", ratio: "" },
+    primary: { passLevel: "", ratio: "" },
+    secondary: { passLevel: "", ratio: "" },
+    accent: { passLevel: "", ratio: "" },
+  });
+
+  useEffect(() => {
+    const checkColorChanges = async () => {
+      const prevColors = prevColorsRef.current;
+
+      for (const [key, newColor] of Object.entries(colors)) {
+        if (newColor === prevColors[key]) continue;
+
+        if (key === "text") {
+          // Text changed - update all color contrasts
+          for (const [colorKey, colorValue] of Object.entries(colors)) {
+            if (colorKey !== "text") {
+              const passLevel = await CheckContrast(newColor, colorValue);
+              setWCAGLevel((prev) => ({ ...prev, [colorKey]: passLevel }));
+            }
+          }
+        } else {
+          // Background color changed - update its contrast with text
+          const passLevel = await CheckContrast(colors.text, newColor);
+          setWCAGLevel((prev) => ({ ...prev, [key]: passLevel }));
+        }
+      }
+
+      prevColorsRef.current = colors;
+    };
+
+    checkColorChanges();
+  }, [colors]);
+
   return (
     <ModalBase isOpen={isOpen} onClose={onClose}>
       <div className="text-lg font-medium mb-2">Colors</div>
       <p className="text-sm text-neutral-600 mb-3">
-        Your color controls go here.
+        Create your dream color pallete
       </p>
 
       <div className="flex flex-col gap-2 mb-3">
-        {Object.keys(colors).map((key) => (
+        {Object.keys(colors).map((keyName) => (
           <button
-            key={key}
-            className={`capitalize text-sm font-bold px-5 py-1 rounded-full cursor-pointer transition-all duration-200 border-2 flex-1 sm:flex-none
-              ${
-                selectedColor === key
-                  ? "bg-gray-200 text-black border-gray-600 shadow-lg"
-                  : "bg-gray-100 text-black border-gray-200 hover:border-gray-400 hover:bg-gray-100 hover:shadow-md"
-              }`}
-            onClick={() => setSelectedColor(key)}
+            key={keyName}
+            className={`px-3 py-1.5 cursor-pointer flex flex-row border-1 rounded-sm
+        ${
+          selectedColor === keyName
+            ? "bg-gray-200 text-black border-neutral-600 shadow-lg"
+            : "bg-gray-100 text-black border-gray-200 hover:border-gray-400 hover:bg-gray-100 hover:shadow-md"
+        }`}
+            onClick={() => setSelectedColor(keyName)}
           >
-            {key}
+            <div className="mr-auto flex flex-row items-center gap-1">
+              <div
+                style={{ backgroundColor: colors[keyName] }}
+                className="w-8 h-8 rounded-full border-2 border-white shadow-sm group-hover:scale-105 transition-transform flex-shrink-0"
+              />
+              <div className="flex flex-col gap-1 text-start">
+                <span className="capitalize font-semibold">
+                  {keyName} color
+                </span>
+                <span className="text-sm text-neutral-600 ">
+                  {colors[keyName]}
+                </span>
+              </div>
+            </div>
+
+            {keyName != "text" && (
+              <WCAGVisuals
+                passLevel={WCAGLevel[keyName]?.passLevel}
+                wcagData={WCAGLevel}
+              />
+            )}
           </button>
         ))}
       </div>
@@ -131,6 +188,35 @@ const ColorModal = ({ isOpen, onClose, colors, setColors }) => {
         </div>
       </div>
     </ModalBase>
+  );
+};
+
+const getWCAGColor = (passLevel) => {
+  switch (passLevel) {
+    case "AAA":
+      return "bg-green-500";
+    case "AA":
+      return "bg-amber-500";
+    default:
+      return "bg-red-700";
+  }
+};
+
+const WCAGVisuals = ({ passLevel, wcagData }) => {
+  console.log(passLevel);
+
+  return (
+    <div className="flex flex-col gap-1 items-end text-sm text-neutral-600 h-full">
+      <div
+        className={`size-4 rounded-full border-2 border-white shadow-xs ${getWCAGColor(
+          passLevel
+        )}`}
+        title={`WCAG ${wcagData?.passLevel || "Loading..."} - Ratio: ${
+          wcagData?.ratio || "N/A"
+        }`}
+      />
+      {passLevel}
+    </div>
   );
 };
 

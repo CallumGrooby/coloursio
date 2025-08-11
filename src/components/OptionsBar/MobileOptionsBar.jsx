@@ -72,7 +72,7 @@ export const ModalBase = ({ isOpen, onClose, children }) => {
   return (
     <div
       className={`fixed inset-0 z-40 flex items-end sm:items-center justify-center
-        transition-opacity duration-200 p-2
+        transition-opacity duration-200 p-2 
         ${isOpen ? "opacity-100" : "opacity-0"}
       `}
     >
@@ -83,7 +83,7 @@ export const ModalBase = ({ isOpen, onClose, children }) => {
       <div
         className={`
             h-full bg-white w-full py-4 px-4 relative rounded-sm 
-          transition-transform duration-200
+          transition-transform duration-200 overflow-x-scroll
           ${isOpen ? "translate-y-0 sm:scale-100" : "translate-y-4 sm:scale-95"}
         `}
       >
