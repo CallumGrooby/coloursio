@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { FontPopup } from "./FontPopup.jsx";
+import { useGoogleFonts } from "../../utils/fontUtils.js";
 
 export const FontDisplay = ({
   headerFont,
   setHeaderFont,
   bodyFont,
-  setBodyFont, // Fixed typo from setBodyFront
+  setBodyFont,
 }) => {
   const [openFontSection, setOpenFontSection] = useState(null);
-  const [fontList, setFontList] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const apiKey = import.meta.env.VITE_GOOGLE_FONT_API_KEY;
+
+  // Use the custom hook for font management
+  const { fontList, loading, loadFont } = useGoogleFonts(apiKey);
 
   const handleFontSelect = (selectedFont, fontType) => {
     console.log(`Selected ${selectedFont} for ${fontType}`);
@@ -19,64 +22,12 @@ export const FontDisplay = ({
     } else if (fontType === "body") {
       setBodyFont(selectedFont);
     }
-    setOpenFontSection(null); // Close popup after selection
+    setOpenFontSection(null);
   };
 
   const handleToggleFontSection = (section) => {
     setOpenFontSection((prev) => (prev === section ? null : section));
   };
-
-  // Get a list of fonts
-  useEffect(() => {
-    const fetchFonts = async () => {
-      if (fontList.length > 0) return; // Don't fetch if already loaded
-
-      console.log("Fetching Fonts");
-      setLoading(true);
-
-      try {
-        const apiKey = import.meta.env.VITE_GOOGLE_FONT_API_KEY;
-        const response = await fetch(
-          `https://www.googleapis.com/webfonts/v1/webfonts?key=${apiKey}&sort=popularity`
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        // Create font options array
-        const options = data.items.map((font) => ({
-          value: font.family,
-          label: font.family,
-          category: font.category,
-        }));
-
-        setFontList(options);
-      } catch (error) {
-        console.error("Error fetching fonts:", error);
-        // Fallback to popular fonts if API fails
-        const fallbackFonts = [
-          "Inter",
-          "Roboto",
-          "Open Sans",
-          "Lato",
-          "Montserrat",
-          "Source Sans Pro",
-          "Raleway",
-          "Nunito",
-          "Poppins",
-          "Merriweather",
-        ].map((font) => ({ value: font, label: font, category: "sans-serif" }));
-        setFontList(fallbackFonts);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFonts();
-  }, [fontList.length]);
 
   return (
     <>
@@ -87,6 +38,7 @@ export const FontDisplay = ({
         onToggle={handleToggleFontSection}
         onFontSelect={handleFontSelect}
         fontList={fontList}
+        loadFont={loadFont}
       />
       <FontButton
         name="body"
@@ -95,6 +47,7 @@ export const FontDisplay = ({
         onToggle={handleToggleFontSection}
         onFontSelect={handleFontSelect}
         fontList={fontList}
+        loadFont={loadFont}
       />
     </>
   );
@@ -107,21 +60,14 @@ const FontButton = ({
   onToggle,
   onFontSelect,
   fontList,
+  loadFont,
 }) => {
-  // Load Google Font dynamically when font changes
+  // Load Google Font when font changes using the utility function
   useEffect(() => {
     if (font && font !== "inherit") {
-      const fontFamily = font.replace(/\s+/g, "+");
-      const link = document.createElement("link");
-      link.href = `https://fonts.googleapis.com/css2?family=${fontFamily}:wght@300;400;600;700&display=swap`;
-      link.rel = "stylesheet";
-
-      // Check if already loaded
-      if (!document.querySelector(`link[href="${link.href}"]`)) {
-        document.head.appendChild(link);
-      }
+      loadFont(font);
     }
-  }, [font]);
+  }, [font, loadFont]);
 
   return (
     <div>
@@ -150,7 +96,6 @@ const FontButton = ({
         `}
           aria-label={`Select ${name} font`}
         >
-          {/* Font Label */}
           <span
             className="text-base text-gray-600 group-hover:text-gray-800 flex-grow text-left truncate"
             style={{ fontFamily: font || "inherit" }}

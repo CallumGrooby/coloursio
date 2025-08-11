@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Palette, LetterCase } from "./Icons";
 import { HexColorPicker } from "react-colorful";
 import ColorModal from "./ColorModal";
+import FontModal from "./FontModal";
 
 export const MobileOptionsBar = ({
   colors,
@@ -165,13 +166,13 @@ export const ModalBase = ({ isOpen, onClose, children }) => {
 // );
 // };
 
-const FontModal = ({ isOpen, onClose }) => {
-  return (
-    <ModalBase isOpen={isOpen} onClose={onClose}>
-      <div className="text-lg font-medium mb-2">Fonts</div>
-      <p className="text-sm text-neutral-600 mb-3">
-        Your font controls go here.
-      </p>
-    </ModalBase>
-  );
-};
+// const FontModal = ({ isOpen, onClose }) => {
+//   return (
+//     <ModalBase isOpen={isOpen} onClose={onClose}>
+//       <div className="text-lg font-medium mb-2">Fonts</div>
+//       <p className="text-sm text-neutral-600 mb-3">
+//         Your font controls go here.
+//       </p>
+//     </ModalBase>
+//   );
+// };
