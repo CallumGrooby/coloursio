@@ -34,7 +34,7 @@ const sections = [
 export const HowItWorksSection = ({ colors, headerFont, bodyFont }) => {
   return (
     <section
-      className={`container mx-auto  flex flex-col justify-center relative`}
+      className={`container mx-auto  px-2 flex flex-col justify-center relative`}
     >
       <header className={`mt-20 mb-12`}>
         <h1

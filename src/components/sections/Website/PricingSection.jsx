@@ -5,7 +5,7 @@ const pricingPlans = ["Basic", "Premium", "Pro"];
 export const PricingSection = ({ colors, headerFont, bodyFont }) => {
   return (
     <section
-      className="container mx-auto w-full flex flex-col items-center justify-center gap-6 mb-8"
+      className="container mx-auto w-full flex flex-col items-center justify-center gap-6 mb-8  px-2 sm:px-0"
       style={{ fontFamily: bodyFont || "inherit" }}
     >
       <div className="flex flex-col gap-3 justify-center items-center max-w-[972px] w-full">

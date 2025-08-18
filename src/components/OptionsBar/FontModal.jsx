@@ -15,10 +15,6 @@ const FontModal = ({
   return (
     <ModalBase isOpen={isOpen} onClose={onClose}>
       <div className="text-lg font-medium mb-2">Fonts</div>
-      <p className="text-sm text-neutral-600 mb-3">
-        Your font controls go here.
-      </p>
-
       <FontDisplay
         headerFont={headerFont}
         setHeaderFont={setHeaderFont}
@@ -81,9 +77,6 @@ const FontDisplay = ({ headerFont, setHeaderFont, bodyFont, setBodyFont }) => {
 
       {/* Current Selection Display */}
       <div className="mb-4">
-        <h2 className="text-lg font-semibold mb-2 capitalize">
-          {activeFontType} Font Selection
-        </h2>
         <div className="bg-gray-50 rounded-lg p-4">
           <p className="text-sm text-gray-600 mb-1">
             Current {activeFontType} font:

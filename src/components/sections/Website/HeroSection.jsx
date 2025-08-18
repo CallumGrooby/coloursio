@@ -3,7 +3,7 @@ import DynamicText from "../../DynamicText";
 export const HeroSection = ({ colors, headerFont, bodyFont }) => {
   return (
     <section
-      className={`container mx-auto flex flex-col items-center justify-center gap-6 pt-56 pb-40`}
+      className={`container mx-auto flex flex-col items-center justify-center gap-6 pt-56 pb-40 px-2`}
     >
       <h1
         className="text-center text-3xl font-semibold"
@@ -23,15 +23,14 @@ export const HeroSection = ({ colors, headerFont, bodyFont }) => {
       </h2>
 
       <div
-        className="bg-primary text-white p-4 rounded-[58px] rounded-bl-md"
+        className="bg-primary text-white px-8 py-2 rounded-[58px] rounded-bl-md"
         style={{ fontFamily: bodyFont || "inherit" }}
       >
-        <h1 className="font-semibold">
+        <h1 className="font-semibold text-start">
           Makes deciding on colours and typography easy
         </h1>
-        <span className="flex flex-row justify-between mt-2">
-          <h2>Sarah Jones</h2>
-          <span className="text-accent">★★★★★</span>
+        <span className="flex flex-row justify-start">
+          <span className="text-accent text-2xl">★★★★★</span>
         </span>
       </div>
 
@@ -39,12 +38,18 @@ export const HeroSection = ({ colors, headerFont, bodyFont }) => {
         className="flex flex-row gap-4"
         style={{ fontFamily: headerFont || "inherit" }}
       >
-        <button className="website-button text-lg bg-primary text-white px-6 py-3 rounded-md">
+        <button
+          className="website-button text-lg bg-primary  text-white px-6 py-3 rounded-md
+        hover:bg-secondary hover:text-text transition-colors duration-300 ease-in-out cursor-pointer"
+        >
           How It Works
         </button>
 
         <DynamicText backgroundColor={colors.secondary}>
-          <button className="website-button bg-secondary text-lg px-6 py-3 rounded-md">
+          <button
+            className="website-button bg-secondary text-lg px-6 py-3 rounded-md
+           hover:bg-accent hover:text-text transition-colors duration-300 ease-in-out cursor-pointer"
+          >
             Get Started
           </button>
         </DynamicText>

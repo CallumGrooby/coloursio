@@ -1,10 +1,17 @@
 import React from "react";
 
-export const LetterCase = ({ className, onClick }) => {
+export const LetterCase = ({
+  className,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+}) => {
   return (
     <svg
       onClick={onClick}
       className={className}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       width="32"
@@ -24,10 +31,12 @@ export const LetterCase = ({ className, onClick }) => {
   );
 };
 
-export const Palette = ({ className, onClick }) => {
+export const Palette = ({ className, onClick, onMouseEnter, onMouseLeave }) => {
   return (
     <svg
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={className}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"

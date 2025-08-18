@@ -2,54 +2,54 @@ const sections = [
   {
     title: "Choosing the Right Font for Your Brand",
     text: "Typography sets the tone for your brand. Discover how to select a font that communicates your message effectively.",
-    gridArea: "1 / 1 / 4 / 7",
   },
   {
     title: "Creating a Unique Brand Identity with Color & Type",
     text: "Your brand’s personality starts with visuals. Learn how to craft a distinctive identity using color psychology and typography.",
-    gridArea: "4 / 1 / 8 / 4",
   },
   {
     title: "5 Common Color Mistakes (And How to Avoid Them)",
     text: "Overuse of bright colors? Poor contrast? Learn the most common color mistakes in design and how to fix them.",
-    gridArea: "4 / 4 / 8 / 7",
   },
   {
     title: "Why Typography Matters More Than You Think",
     text: "Beyond just aesthetics, typography plays a crucial role in readability, hierarchy, and user experience.",
-    gridArea: "1 / 7 / 4 / 10",
   },
   {
     title: "How to Create a Cohesive Color Palette in Minutes",
     text: "Struggling with color harmony? Learn simple techniques to build stunning, well-balanced palettes effortlessly.",
-    gridArea: "4 / 7 / 6 / 10",
   },
   {
     title: "Dark Mode vs. Light Mode: Which Works Best?",
     text: "Explore the pros and cons of dark and light UI themes, and how color contrast impacts readability and accessibility.",
-    gridArea: "6 / 7 / 8 / 10",
   },
 ];
 
 export const BlogSection = ({ colors, headerFont, bodyFont }) => {
+  // Distribute items into 4 columns to mimic a masonry look
+  const columnCount = 4;
+  const cols = Array.from({ length: columnCount }, () => []);
+  sections.forEach((item, i) => {
+    cols[i % columnCount].push(item);
+  });
+
   return (
     <section
-      className="w-full py-4 px-4 max-w-[1440px] mx-auto flex flex-col gap-6 min-h-[800px]"
+      className="w-full py-4 px-4 sm:px-0 max-w-[972px]   mx-auto"
       style={{ fontFamily: bodyFont || "inherit" }}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-9 grid-rows-7 gap-4 w-full h-full">
-        {sections.map((section, index) => (
-          <div
-            key={index}
-            className={`flex flex-col gap-2 min-h-48 justify-end border rounded-2xl box-border px-4 py-2 hover:bg-primary transition-all duration-500
-              ${index === 0 ? "bg-secondary " : "border-primary "}`}
-            style={{ gridArea: section.gridArea }}
-          >
-            <ContentSection
-              title={section.title}
-              text={section.text}
-              isFirst={index === 0}
-            />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {cols.map((col, colIdx) => (
+          <div className="grid gap-4" key={`col-${colIdx}`}>
+            {col.map((item, idx) => (
+              <ContentCard
+                key={`${colIdx}-${idx}-${item.title}`}
+                title={item.title}
+                text={item.text}
+                headerFont={headerFont}
+                colors={colors}
+              />
+            ))}
           </div>
         ))}
       </div>
@@ -57,11 +57,19 @@ export const BlogSection = ({ colors, headerFont, bodyFont }) => {
   );
 };
 
-const ContentSection = ({ title, text }) => {
+const ContentCard = ({ title, text, headerFont, colors }) => {
   return (
-    <li className="list-none">
-      <h1 className="text-xl text-text font-bold mb-2">{title}</h1>
-      <p className="text-sm text-text">{text}</p>
-    </li>
+    <article
+      className={`w-full rounded-xl shadow bg-inherit border border-primary p-4 hover:shadow-lg transition-shadow duration-300`}
+      aria-label={title}
+    >
+      <h3
+        className={`text-lg font-bold mb-2 text-primary`}
+        style={{ fontFamily: headerFont || "inherit" }}
+      >
+        {title}
+      </h3>
+      <p className={`text-sm leading-relaxed text-text`}>{text}</p>
+    </article>
   );
 };

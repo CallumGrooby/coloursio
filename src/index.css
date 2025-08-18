@@ -45,7 +45,8 @@
 }
 
 .mobile-options-icons {
-  @apply text-accent size-16 text-center bg-white rounded-full p-2 drop-shadow-lg;
+  @apply text-primary size-16 text-center bg-white rounded-full p-2 drop-shadow-lg
+   hover:text-accent hover:bg-neutral-100 transition-colors duration-300 ease-in-out cursor-pointer;
 }
 
 /* Base picker container */

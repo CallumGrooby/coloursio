@@ -40,7 +40,7 @@ export const MobileOptionsBar = ({
         setBodyFont={setBodyFont}
       />
 
-      <div className="fixed bottom-0 flex flex-row justify-between w-screen mb-2 px-2 z-30">
+      <div className="fixed bottom-0 flex flex-row justify-between w-full mb-2 px-2 z-30">
         <Palette
           className="mobile-options-icons"
           onClick={() => toggleModal("colors")}

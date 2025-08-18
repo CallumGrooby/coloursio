@@ -21,7 +21,7 @@ const whyUsContent = [
 export const WhyUsSection = ({ colors, headerFont, bodyFont }) => {
   return (
     <section
-      className={`w-full px-16 py-4 flex flex-col justify-center gap-6 relative min-h-[600px] bg-secondary text-text`}
+      className={`w-full px-2 sm:px-16 py-4 flex flex-col justify-center gap-6 relative min-h-[600px] bg-secondary text-text `}
     >
       <header className={`max-w-[1440px] w-full mx-auto`}>
         <h1

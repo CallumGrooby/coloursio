@@ -13,6 +13,7 @@ import { CheckContrast } from "../utils/ContrastApi";
 import ColorPalette from "../components/OptionsBar";
 import OptionsBar from "../components/OptionsBar";
 import { MobileOptionsBar } from "../components/OptionsBar/MobileOptionsBar";
+import { DesktopOptionsBar } from "../components/OptionsBar/DesktopOptionsBar";
 
 const getInitialColors = () => {
   const params = new URLSearchParams(window.location.search);
@@ -122,6 +123,15 @@ export const HomePage = () => {
         bodyFont={bodyFont}
         setBodyFont={setBodyFont}
       />
+
+      {/* <DesktopOptionsBar
+        colors={colors}
+        setColors={setColors}
+        headerFont={headerFont}
+        setHeaderFont={setHeaderFont}
+        bodyFont={bodyFont}
+        setBodyFont={setBodyFont}
+      /> */}
     </div>
   );
 };
