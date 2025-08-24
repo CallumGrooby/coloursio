@@ -17,7 +17,7 @@ export const Navbar = () => {
 
         <ul className="flex gap-4 mt-2">
           <li>
-            <Link to="/docs">Color Contrast</Link>
+            <Link to="/contrast-checker">Color Contrast</Link>
           </li>
           <li>
             <Link to="/playground">Play Ground</Link>

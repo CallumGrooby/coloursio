@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Palette, LetterCase } from "./Icons";
+import { Palette, LetterCase } from "../../assets/Icons";
 import { HexColorPicker } from "react-colorful";
 import ColorModal from "./ColorModal";
 import FontModal from "./FontModal";

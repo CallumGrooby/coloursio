@@ -1,17 +1,4 @@
 import { StrictMode } from "react";
-import "./index.css";
-
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import { Navbar } from "./pages/Navbar.jsx";
-import ErrorPage from "./pages/ErrorPage.jsx";
-import { HomePage } from "./pages/HomePage.jsx";
-import { DocsPage } from "./pages/DocsPage.jsx";
-import { HowItWorks } from "./pages/DocsPages/HowItWorks.jsx";
-import { AboutUs } from "./pages/DocsPages/AboutUs.jsx";
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,8 +6,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        index: true,
+        element: <Navigate to="/playground" replace />,
+      },
+      {
+        path: "/playground",
         element: <HomePage />,
+      },
+      {
+        path: "/contrast-checker",
+        element: <ColorContrast />,
       },
       {
         path: "/docs",
@@ -34,6 +29,24 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+import "./index.css";
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+
+import { Navbar } from "./pages/Navbar.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import { HomePage } from "./pages/HomePage.jsx";
+import { DocsPage } from "./pages/DocsPage.jsx";
+import { HowItWorks } from "./pages/DocsPages/HowItWorks.jsx";
+import { AboutUs } from "./pages/DocsPages/AboutUs.jsx";
+import { ColorContrast } from "./pages/ColorContrast.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

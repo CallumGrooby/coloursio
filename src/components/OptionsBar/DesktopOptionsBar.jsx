@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { LetterCase, Palette } from "./Icons";
+import { LetterCase, Palette } from "../../assets/Icons";
 
 export const DesktopOptionsBar = () => {
   const [modals, setModals] = useState({
