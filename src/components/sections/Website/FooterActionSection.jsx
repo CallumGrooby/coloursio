@@ -6,7 +6,7 @@ export const FooterActionSection = ({ colors, headerFont, bodyFont }) => {
           className="text-2xl font-bold text-background"
           style={{ fontFamily: headerFont || "inherit" }}
         >
-          Export Your Stunning Colours and Fonts
+          Export Your Stunning Colors and Fonts
         </h1>
         <p
           className="text-base text-background"

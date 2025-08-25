@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ColourPicker } from "../../colourPicker/colourPicker";
+import { ColorPicker } from "../../ColorPicker/ColorPicker";
 import { HexColorPicker } from "react-colorful";
 import axios from "axios";
 import { ColorInput } from "../../colorInput/colorInput";
@@ -23,7 +23,7 @@ export const StyleBar = () => {
     setBodyStyle(updatedStyles); // Update context state
   };
 
-  const updateTextColour = (key, value) => {
+  const updateTextColor = (key, value) => {
     const updatedColors = { ...colorStyle, [key]: value };
     setColorStyle(updatedColors); // Update context state
   };
@@ -48,21 +48,21 @@ export const StyleBar = () => {
 
       <section className="flex flex-col gap-2 px-3 overflow-visible">
         <h1 className="text-base text-[#969696] bg-[#f2f2f2] shadow-md w-fit max-w-36 px-4 py-1 rounded-md uppercase">
-          Colours
+          Colors
         </h1>
 
         <ColorInput
           text={"Text"}
           defaultColor={colorStyle.text}
           onChange={(value) => {
-            updateTextColour("text", value);
+            updateTextColor("text", value);
           }}
         />
         <ColorInput
           text={"Background"}
           defaultColor={colorStyle.background}
           onChange={(value) => {
-            updateTextColour("background", value);
+            updateTextColor("background", value);
           }}
           textColor={colorStyle.text}
         />
@@ -70,7 +70,7 @@ export const StyleBar = () => {
           text={"Primary"}
           defaultColor={colorStyle.primary}
           onChange={(value) => {
-            updateTextColour("primary", value);
+            updateTextColor("primary", value);
           }}
           textColor={colorStyle.text}
         />
@@ -78,7 +78,7 @@ export const StyleBar = () => {
           text={"Secondary"}
           defaultColor={colorStyle.secondary}
           onChange={(value) => {
-            updateTextColour("secondary", value);
+            updateTextColor("secondary", value);
           }}
           textColor={colorStyle.text}
         />
@@ -86,7 +86,7 @@ export const StyleBar = () => {
           text={"Accent"}
           defaultColor={colorStyle.accent}
           onChange={(value) => {
-            updateTextColour("accent", value);
+            updateTextColor("accent", value);
           }}
           textColor={colorStyle.text}
         />

@@ -8,7 +8,7 @@ const whyUsContent = [
   },
   {
     icon: "",
-    title: "Generate Tailored Colour Palettes",
+    title: "Generate Tailored ColorPalettes",
     text: "Easily create, customize, and visualize your color palette. Design stunning color combinations that enhance your website’s visual appeal and user experience. Adjust shades, contrasts, and accents effortlessly.",
   },
   {

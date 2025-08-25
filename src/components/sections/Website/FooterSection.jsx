@@ -6,7 +6,7 @@ export const FooterSection = ({ colors, headerFont, bodyFont }) => {
     >
       <div className="w-full flex flex-col lg:flex-row gap-4">
         <div className="basis-4/12 min-h-80 flex justify-center items-center rounded-2xl bg-secondary text-primary text-xl font-bold">
-          COLOURS.IO
+          Color Shift
         </div>
 
         <div className="flex-1 min-h-80 flex flex-col justify-between px-8 py-4 rounded-2xl bg-primary text-background">
@@ -33,7 +33,7 @@ export const FooterSection = ({ colors, headerFont, bodyFont }) => {
               <button>Privacy</button>
               <button>Terms</button>
             </div>
-            <p>© 2025 Colours.io. All rights reserved.</p>
+            <p>© 2025 Color Shift. All rights reserved.</p>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@ export const FooterSection = ({ colors, headerFont, bodyFont }) => {
           GitHub
         </button>
         <button className="bg-secondary border-primary text-text hover:text-primary border hover:border-primary hover:bg-background transition-all duration-700 text-lg text-start px-4 font-semibold rounded-2xl ">
-          Colours.io
+          Color Shift
         </button>
       </div>
     </footer>

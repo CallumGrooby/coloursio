@@ -15,11 +15,11 @@ export const PricingSection = ({ colors, headerFont, bodyFont }) => {
             style={{ fontFamily: headerFont || "inherit" }}
           >
             Why Choose{" "}
-            <span className="text-primary font-bold">Colours.io</span>
+            <span className="text-primary font-bold">Color Shift</span>
           </h1>
           <p className="max-w-[480px] text-center mb-4 text-text">
-            Join thousands of designers, marketers, and hobbyists who use
-            Colours.io to create stunning designs effortlessly.
+            Join thousands of designers, marketers, and hobbyists who use Color
+            Shift to create stunning designs effortlessly.
           </p>
         </header>
 

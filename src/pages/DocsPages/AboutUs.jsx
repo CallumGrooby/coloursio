@@ -2,11 +2,11 @@ import React from "react";
 
 export const AboutUs = () => (
   <div className="docs-container">
-    <h1 className="header">What is Colours.io?</h1>
+    <h1 className="header">What is Color Shift?</h1>
     <p className="content">
-      Colours.io is a tool I made to make working with colour palettes way
-      easier. Colour is one of the most important parts of design, especially
-      for websites, but getting it right can be time-consuming and frustrating.
+      Color Shift is a tool I made to make working with Colorpalettes way
+      easier. Coloris one of the most important parts of design, especially for
+      websites, but getting it right can be time-consuming and frustrating.
       <br />
       You might spend ages putting together a palette that looks great on paper,
       but then when you actually use it in a layout, it just doesn't work. Maybe
@@ -16,24 +16,24 @@ export const AboutUs = () => (
 
     <h2 className="sub-header">The Problem</h2>
     <p className="content">
-      The problem is that it’s really hard to see how colours will actually look
+      The problem is that it’s really hard to see how Colors will actually look
       once they’re in use. You can look at swatches all day, but that doesn’t
       show you how they behave across a whole layout. So you end up building a
-      quick mockup just to test some colours, or greyscaling your design so you
+      quick mockup just to test some Colors, or greyscaling your design so you
       can swap things around more easily. Either way, it takes time.
       <br />
-      Another issue is how colours look different on different screens.
-      Something that looks clean and sharp on your laptop might look completely
-      different on a phone or tablet. And when you're designing for someone
-      else, it’s pretty common for a client to say the colours don’t feel right,
-      even after you’ve gone through multiple rounds.
+      Another issue is how Colors look different on different screens. Something
+      that looks clean and sharp on your laptop might look completely different
+      on a phone or tablet. And when you're designing for someone else, it’s
+      pretty common for a client to say the Colors don’t feel right, even after
+      you’ve gone through multiple rounds.
     </p>
 
     <h3 className="sub-header">The Solution</h3>
 
     <p className="content">
-      Colours.io helps solve that by giving you a quick way to test your colours
-      on a sample website layout. You pick your colours, change fonts if you
+      Color Shift helps solve that by giving you a quick way to test your Colors
+      on a sample website layout. You pick your Colors, change fonts if you
       want, and the preview updates instantly. It’s a faster way to see how
       things actually look when used in a proper context.
       <br />

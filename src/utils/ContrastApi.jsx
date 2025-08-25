@@ -6,11 +6,11 @@ const normalizeHex = (val) => {
   return v.toLowerCase();
 };
 
-export const CheckContrast = (textColor, colourToCheck) => {
-  if (!textColor || !colourToCheck) return Promise.resolve(null);
+export const CheckContrast = (textColor, ColorToCheck) => {
+  if (!textColor || !ColorToCheck) return Promise.resolve(null);
 
   const normalizedTextColor = textColor.slice(1);
-  const normalizedSecondaryColor = colourToCheck.slice(1);
+  const normalizedSecondaryColor = ColorToCheck.slice(1);
 
   const url = `https://webaim.org/resources/contrastchecker/?fcolor=${normalizedTextColor}&bcolor=${normalizedSecondaryColor}&api`;
 

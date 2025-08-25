@@ -14,7 +14,7 @@ export const Navbar = () => {
         <div className="flex flex-row justify-between items-center">
           <Link to={"/"}>
             <h1 className="text-gray-700 text-2xl font-bold">
-              Colors.<span>io</span>
+              Color<span className="text-primary"> Shift</span>
             </h1>
           </Link>
 
@@ -32,7 +32,7 @@ export const Navbar = () => {
                   setIsExportOpen(true);
                   setIsMobileMenuOpen(false);
                 }}
-                className="text-left text-white hover:text-gray-200 transition-colors px-4 bg-blue-600 hover:bg-blue-500 rounded-full cursor-pointer py-1"
+                className="text-left text-white hover:text-gray-200 transition-colors px-4 bg-primary hover:bg-secondary rounded-full cursor-pointer py-1"
               >
                 Export
               </button>

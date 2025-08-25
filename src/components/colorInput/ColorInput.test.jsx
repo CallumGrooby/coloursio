@@ -22,7 +22,7 @@ test("toggles color picker and calls onChange with the selected color", async ()
   await userEvent.click(input);
 
   // Assert that the color picker is visible (if this is part of your component's behavior)
-  expect(screen.getByText(/Colour/i)).toBeInTheDocument();
+  expect(screen.getByText(/Color/i)).toBeInTheDocument();
 
   // Simulate typing a new color in the input field
   const newColor = "#123456";

@@ -61,11 +61,11 @@ const WCAGSection = ({ bodyFont, headerFont }) => {
     },
     {
       title: "Understanding A vs AA Ratings",
-      text: "WCAG ratings range from A (basic accessibility) to AA (industry standard). Colours.io helps you meet both.",
+      text: "WCAG ratings range from A (basic accessibility) to AA (industry standard). Color Shift helps you meet both.",
     },
     {
       title: "Automated Contrast Testing",
-      text: "Colours.io automatically checks your color combinations against WCAG standards — so you know your design works before you export.",
+      text: "Color Shift automatically checks your color combinations against WCAG standards — so you know your design works before you export.",
     },
   ];
 

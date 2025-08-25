@@ -42,7 +42,7 @@ export const HowItWorksSection = ({ colors, headerFont, bodyFont }) => {
           style={{ fontFamily: headerFont || "inherit" }}
         >
           Master your design with{" "}
-          <span className="font-bold italic text-primary ">Colours.io</span>
+          <span className="font-bold italic text-primary ">Color Shift</span>
         </h1>
       </header>
 

@@ -10,7 +10,7 @@ export const ColorInput = ({
   defaultColor = "#aabbcc",
   textColor = null,
 }) => {
-  const [showColourPicker, setShowColourPicker] = useState(false);
+  const [showColorPicker, setShowColorPicker] = useState(false);
   const [color, setColor] = useState(defaultColor);
   const [isBackgroundLight, setIsBackgroundLight] = useState(true);
 
@@ -38,7 +38,7 @@ export const ColorInput = ({
 
   const pickerRef = useRef(null);
 
-  const handleInputFocus = () => setShowColourPicker(true);
+  const handleInputFocus = () => setShowColorPicker(true);
   const handleInputBlur = (event) => {
     // Delay hiding to allow checking if click is inside picker
     setTimeout(() => {
@@ -48,13 +48,13 @@ export const ColorInput = ({
       ) {
         return;
       }
-      setShowColourPicker(false);
+      setShowColorPicker(false);
     }, 100);
   };
 
   return (
     <div className="relative inline-flex flex-col ">
-      <h1 className="text-base">{text} Colour</h1>
+      <h1 className="text-base">{text} Color</h1>
       <span className="relative">
         <input
           onFocus={handleInputFocus}
@@ -68,7 +68,7 @@ export const ColorInput = ({
         <ConstrastChecker backgroundColor={color} textColor={textColor} />
       </span>
 
-      {showColourPicker && (
+      {showColorPicker && (
         <div
           ref={pickerRef}
           className="absolute z-50 top-1/2 left-full transform  -translate-y-1/2 px-2"

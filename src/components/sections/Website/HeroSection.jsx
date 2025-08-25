@@ -10,7 +10,7 @@ export const HeroSection = ({ colors, headerFont, bodyFont }) => {
         style={{ fontFamily: headerFont || "inherit" }}
       >
         Visualize Stunning{" "}
-        <span className="font-bold text-primary">Colours</span>
+        <span className="font-bold text-primary">Colors</span>
         {" and "}
         <span className="font-bold italic text-accent">Fonts</span>
       </h1>
@@ -30,7 +30,7 @@ export const HeroSection = ({ colors, headerFont, bodyFont }) => {
           <span className="text-accent text-2xl">★★★★★</span>
         </span>
         <h1 className="font-normal text-center text-base lg:text-lg">
-          Makes deciding on colours and typography easy
+          Makes deciding on Colors and typography easy
         </h1>
       </div>
 
