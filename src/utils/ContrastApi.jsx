@@ -19,9 +19,11 @@ export const CheckContrast = (textColor, colourToCheck) => {
     .get(url)
     .then((response) => {
       const data = response.data;
+      console.log(data);
       return {
         passLevel: getPassLevel(data),
-        ratio: data.ratio,
+        // ratio: data.ratio,
+        ...data,
       };
     })
     .catch((error) => {

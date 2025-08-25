@@ -203,8 +203,6 @@ const getWCAGColor = (passLevel) => {
 };
 
 const WCAGVisuals = ({ passLevel, wcagData }) => {
-  console.log(passLevel);
-
   return (
     <div className="flex flex-col gap-1 items-end text-sm text-neutral-600 h-full">
       <div
