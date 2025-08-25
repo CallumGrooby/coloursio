@@ -2,9 +2,9 @@ import { Link, Outlet } from "react-router-dom";
 
 export const DocsPage = () => {
   return (
-    <div className="flex h-full container mx-auto">
+    <div className="flex lg:flex-row flex-col h-full container mx-auto">
       {/* Sidebar */}
-      <nav className="w-64 border-r border-gray-300 p-4">
+      <nav className="lg:w-64 w-full lg:border-none lg:border-r  border-b border-gray-300 p-4">
         <ul className="space-y-2">
           <li>
             <h1 className="text-lg font-semibold">Docs</h1>
@@ -15,9 +15,9 @@ export const DocsPage = () => {
           <li>
             <Link to="/docs/how-it-works">How It Works</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/docs/examples">Examples</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
 
