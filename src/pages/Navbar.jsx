@@ -12,11 +12,11 @@ export const Navbar = () => {
       {/* Top Nav */}
       <nav className="p-4 shadow bg-white">
         <div className="flex flex-row justify-between items-center">
-          <div>
+          <Link to={"/"}>
             <h1 className="text-gray-700 text-2xl font-bold">
               Colors.<span>io</span>
             </h1>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex gap-4 items-center">

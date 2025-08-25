@@ -3,7 +3,7 @@ import DynamicText from "../../DynamicText";
 export const HeroSection = ({ colors, headerFont, bodyFont }) => {
   return (
     <section
-      className={`container mx-auto flex flex-col items-center justify-center gap-6 pt-56 pb-40 px-2`}
+      className={`container mx-auto flex flex-col items-center justify-center gap-6 pt-40 lg:pt-56 pb-40 px-2`}
     >
       <h1
         className="text-center text-3xl font-semibold"
@@ -23,15 +23,15 @@ export const HeroSection = ({ colors, headerFont, bodyFont }) => {
       </h2>
 
       <div
-        className="bg-primary text-white px-8 py-2 rounded-[58px] rounded-bl-md"
+        className="bg-primary text-white px-8 py-2 mx-6 rounded-[58px] rounded-bl-md "
         style={{ fontFamily: bodyFont || "inherit" }}
       >
-        <h1 className="font-semibold text-start">
-          Makes deciding on colours and typography easy
-        </h1>
-        <span className="flex flex-row justify-start">
+        <span className="flex flex-row justify-center">
           <span className="text-accent text-2xl">★★★★★</span>
         </span>
+        <h1 className="font-normal text-center text-base lg:text-lg">
+          Makes deciding on colours and typography easy
+        </h1>
       </div>
 
       <div
